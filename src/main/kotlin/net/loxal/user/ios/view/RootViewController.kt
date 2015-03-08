@@ -34,11 +34,15 @@ import net.loxal.user.ios.model.Host
 import org.robovm.apple.uikit.NSTextAlignment
 import org.robovm.apple.uikit.UIControlContentHorizontalAlignment
 import java.util.Date
+import org.robovm.apple.iad.ADBannerView
+import org.robovm.apple.iad.ADAdType
 
 public class RootViewController : UIViewController() {
     private val v = getView()
     private val infoContainer = UITextView()
     private val refresher = UIButton.create(UIButtonType.RoundedRect)
+    private val adBanner = ADBannerView(ADAdType.MediumRectangle)
+
     private val mapper = ObjectMapper()
 
     private val httpClient = DefaultHttpClient()
@@ -50,6 +54,7 @@ public class RootViewController : UIViewController() {
 
         initRefreshUi()
         initInfoContainer()
+        initAdBanner()
         refreshStatus()
     }
 
@@ -90,5 +95,11 @@ public class RootViewController : UIViewController() {
         }
 
         return "I’m very sorry, this should not happen."
+    }
+
+    private fun initAdBanner() {
+        v.addSubview(adBanner)
+        adBanner.setFrame(CGRect(0.0, 318.0, 0.0, 0.0))
+        adBanner.sizeToFit()
     }
 }
