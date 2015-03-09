@@ -99,7 +99,7 @@ public class RootViewController : UIViewController() {
 
     private fun initAdBanner() {
         v.addSubview(adBanner)
-        adBanner.setFrame(CGRect(0.0, 318.0, 0.0, 0.0))
+        adBanner.setFrame(CGRect(0.0, 518.0, 0.0, 0.0))
         adBanner.sizeToFit()
     }
 }
