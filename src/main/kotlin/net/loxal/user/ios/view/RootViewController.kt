@@ -38,7 +38,7 @@ import org.robovm.apple.iad.ADBannerView
 import org.robovm.apple.iad.ADAdType
 
 public class RootViewController : UIViewController() {
-    private val v = getView()
+    private val mainView = getView()
     private val infoContainer = UITextView()
     private val refresher = UIButton.create(UIButtonType.RoundedRect)
     private val adBanner = ADBannerView(ADAdType.Banner)
@@ -50,7 +50,7 @@ public class RootViewController : UIViewController() {
     private val httpGet: HttpGet = HttpGet(uri);
 
     {
-        v.setBackgroundColor(UIColor.white())
+        mainView.setBackgroundColor(UIColor.white())
 
         initRefreshUi()
         initInfoContainer()
@@ -59,17 +59,18 @@ public class RootViewController : UIViewController() {
     }
 
     private fun initInfoContainer() {
-        infoContainer.setFrame(CGRect(5.0, 100.0, 310.0, 100.0))
-        infoContainer.setTextAlignment(NSTextAlignment.Center)
+        mainView.addSubview(infoContainer)
 
-        v.addSubview(infoContainer)
+        infoContainer.setFrame(CGRect(0.0, 100.0, mainView.getFrame().getMaxX(), 100.0))
+        infoContainer.setTextAlignment(NSTextAlignment.Center)
     }
 
     private fun initRefreshUi() {
-        refresher.setFrame(CGRect(5.0, 260.0, 310.0, 30.0))
+        mainView.addSubview(refresher)
+
+        refresher.setFrame(CGRect(0.0, mainView.getFrame().getMidY(), mainView.getFrame().getMaxX(), 30.0))
         refresher.setTitle("Refresh Status", UIControlState.Normal)
         refresher.setContentHorizontalAlignment(UIControlContentHorizontalAlignment.Center)
-        v.addSubview(refresher)
 
         refresher.addOnTouchUpInsideListener({ control, event -> refreshStatus() })
     }
@@ -98,8 +99,8 @@ public class RootViewController : UIViewController() {
     }
 
     private fun initAdBanner() {
-        v.addSubview(adBanner)
-        adBanner.setFrame(CGRect(0.0, 518.0, 0.0, 0.0))
-        adBanner.sizeToFit()
+        mainView.addSubview(adBanner)
+
+        adBanner.setFrame(CGRect(0.0, mainView.getFrame().getMaxY() - adBanner.getFrame().getHeight(), 0.0, 0.0))
     }
 }
