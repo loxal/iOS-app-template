@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Development iteration" type="MavenRunConfiguration" factoryName="Maven" singleton="true" show_console_on_std_out="true" show_console_on_std_err="true">
+  <configuration default="false" name="Development iteration (iPad)" type="MavenRunConfiguration" factoryName="Maven" singleton="true" show_console_on_std_out="true" show_console_on_std_err="true">
     <MavenSettings>
       <option name="myGeneralSettings">
         <MavenGeneralSettings>
@@ -27,7 +27,7 @@
           <option name="goals">
             <list>
               <option value="compile" />
-              <option value="robovm:iphone-sim" />
+              <option value="robovm:ipad-sim" />
             </list>
           </option>
           <option name="profilesMap">
