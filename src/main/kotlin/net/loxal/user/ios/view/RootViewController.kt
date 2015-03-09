@@ -41,7 +41,7 @@ public class RootViewController : UIViewController() {
     private val v = getView()
     private val infoContainer = UITextView()
     private val refresher = UIButton.create(UIButtonType.RoundedRect)
-    private val adBanner = ADBannerView(ADAdType.MediumRectangle)
+    private val adBanner = ADBannerView(ADAdType.Banner)
 
     private val mapper = ObjectMapper()
 
