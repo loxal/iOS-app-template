@@ -25,19 +25,34 @@ import org.robovm.apple.uikit.UIWindow
 import kotlin.platform.platformStatic
 import net.loxal.example.kotlin.ios.view.RootViewController
 import java.util.logging.Logger
+import org.robovm.objc.annotation.Property
 
-public class App : UIApplicationDelegateAdapter() {
+class App : UIApplicationDelegateAdapter() {
+    Property(selector = "window")
+    private final var mainWindow: UIWindow? = getWindow()
 
     override fun didFinishLaunching(app: UIApplication?, launchOptions: UIApplicationLaunchOptions?): Boolean {
-        val window = UIWindow(UIScreen.getMainScreen().getNativeBounds())
-        window.setRootViewController(RootViewController())
-        window.makeKeyAndVisible()
+        mainWindow = UIWindow(UIScreen.getMainScreen().getNativeBounds())
+        mainWindow?.setRootViewController(RootViewController())
+        mainWindow?.makeKeyAndVisible()
+
+        addStrongRef<UIWindow>(mainWindow)
 
         return true
     }
 
+    override fun getWindow(): UIWindow? {
+        return mainWindow
+    }
+
+    override fun setWindow(v: UIWindow?) {
+        mainWindow = UIWindow(UIScreen.getMainScreen().getNativeBounds())
+    }
+
+
     class object {
         val LOG: Logger = Logger.getGlobal()
+
         platformStatic fun main(vararg args: String) {
             val autoreleasePool = NSAutoreleasePool()
             UIApplication.main<UIApplication, App>(args, null, javaClass<App>())
