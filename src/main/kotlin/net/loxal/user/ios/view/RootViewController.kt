@@ -36,8 +36,10 @@ import org.robovm.apple.uikit.UIControlContentHorizontalAlignment
 import java.util.Date
 import org.robovm.apple.iad.ADBannerView
 import org.robovm.apple.iad.ADAdType
+import org.robovm.objc.annotation.CustomClass
 
-public class RootViewController : UIViewController() {
+CustomClass("RootViewController")
+class RootViewController : UIViewController() {
     private val mainView = getView()
     private val infoContainer = UITextView()
     private val refresher = UIButton.create(UIButtonType.RoundedRect)
