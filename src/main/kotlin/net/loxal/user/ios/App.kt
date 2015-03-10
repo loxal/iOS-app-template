@@ -29,26 +29,24 @@ import org.robovm.objc.annotation.Property
 
 class App : UIApplicationDelegateAdapter() {
     Property(selector = "window")
-    private final var mainWindow: UIWindow? = getWindow()
+    private final var window: UIWindow? = getWindow()
 
     override fun didFinishLaunching(app: UIApplication?, launchOptions: UIApplicationLaunchOptions?): Boolean {
-        mainWindow = UIWindow(UIScreen.getMainScreen().getNativeBounds())
-        mainWindow?.setRootViewController(RootViewController())
-        mainWindow?.makeKeyAndVisible()
-
-        addStrongRef<UIWindow>(mainWindow)
+        configureWindow()
 
         return true
     }
 
-    override fun getWindow(): UIWindow? {
-        return mainWindow
+    private fun configureWindow() {
+        window?.setRootViewController(RootViewController())
+        window?.makeKeyAndVisible()
     }
 
-    override fun setWindow(v: UIWindow?) {
-        mainWindow = UIWindow(UIScreen.getMainScreen().getNativeBounds())
-    }
+    override fun getWindow() = window
 
+    override fun setWindow(window: UIWindow?) {
+        this.window = UIWindow(UIScreen.getMainScreen().getNativeBounds())
+    }
 
     class object {
         val LOG: Logger = Logger.getGlobal()
