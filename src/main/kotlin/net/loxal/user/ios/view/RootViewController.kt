@@ -25,7 +25,6 @@ import org.robovm.apple.uikit.UIButton
 import org.robovm.apple.uikit.UIButtonType
 import org.robovm.apple.uikit.UIColor
 import org.robovm.apple.uikit.UIControlState
-import org.robovm.apple.uikit.UITextView
 import org.robovm.apple.uikit.UIViewController
 
 import java.io.ByteArrayOutputStream
@@ -37,11 +36,14 @@ import java.util.Date
 import org.robovm.apple.iad.ADBannerView
 import org.robovm.apple.iad.ADAdType
 import org.robovm.objc.annotation.CustomClass
+import org.robovm.apple.uikit.UILabel
+import org.robovm.apple.uikit.UIFont
 
 CustomClass("RootViewController")
 class RootViewController : UIViewController() {
     private val mainView = getView()
-    private val infoContainer = UITextView()
+    private val infoContainer = UILabel()
+    private val timestamp = UILabel()
     private val refresher = UIButton.create(UIButtonType.RoundedRect)
     private val adBanner = ADBannerView(ADAdType.Banner)
 
@@ -56,15 +58,25 @@ class RootViewController : UIViewController() {
 
         initRefreshUi()
         initInfoContainer()
+        initInfoTimestamp()
         initAdBanner()
         refreshStatus()
+    }
+
+    private fun initInfoTimestamp() {
+        mainView.addSubview(timestamp)
+
+        timestamp.setFrame(CGRect(0.0, 120.0, mainView.getFrame().getMaxX(), 100.0))
+        timestamp.setTextAlignment(NSTextAlignment.Center)
+        timestamp.setFont(UIFont.getSystemFont(UIFont.getSystemFontSize()))
     }
 
     private fun initInfoContainer() {
         mainView.addSubview(infoContainer)
 
-        infoContainer.setFrame(CGRect(0.0, 100.0, mainView.getFrame().getMaxX(), 100.0))
+        infoContainer.setFrame(CGRect(0.0, 100.0, mainView.getFrame().getMaxX(), 20.0))
         infoContainer.setTextAlignment(NSTextAlignment.Center)
+        infoContainer.setFont(UIFont.getSystemFont(UIFont.getSystemFontSize()))
     }
 
     private fun initRefreshUi() {
@@ -81,7 +93,8 @@ class RootViewController : UIViewController() {
 
     private fun showInfo(info: String) {
         val host = mapper.readValue<Host>(info, javaClass<Host>())
-        infoContainer.setText("Host name: ${host.name}  IP address: ${host.address} \n\n Last refresh: ${Date().toGMTString()}")
+        infoContainer.setText("Host name: ${host.name}  IP address: ${host.address}")
+        timestamp.setText("Last refresh: ${Date().toGMTString()}")
     }
 
     private fun fetchHostInfo(): String {
