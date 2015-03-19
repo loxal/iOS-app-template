@@ -33,7 +33,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <robovm.version>1.0.0</robovm.version>
-        <kotlin.version>0.10.770</kotlin.version>
+        <kotlin.version>0.11.91</kotlin.version>
         <robovm.mainClass>net.loxal.user.ios.App</robovm.mainClass>
     </properties>
 
@@ -70,13 +70,13 @@
                 <groupId>org.robovm</groupId>
                 <artifactId>robovm-maven-plugin</artifactId>
                 <version>${robovm.version}</version>
-                <configuration>
-                    <config>
-                        <mainClass>${robovm.mainClass}</mainClass>
-                        <os>ios</os>
-                        <arch>x86</arch>
-                    </config>
-                </configuration>
+                <!--<configuration>-->
+                <!--<config>-->
+                <!--<mainClass>${robovm.mainClass}</mainClass>-->
+                <!--<os>ios</os>-->
+                <!--<arch>x86</arch>-->
+                <!--</config>-->
+                <!--</configuration>-->
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
