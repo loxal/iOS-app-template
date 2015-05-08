@@ -22,9 +22,15 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="iOS App Template" />
         <module name="robovm" />
         <module name="robovm-template" />
+      </profile>
+      <profile default="false" name="Annotation profile for iOS App Template" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="iOS App Template" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

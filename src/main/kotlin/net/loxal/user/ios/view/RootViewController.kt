@@ -17,27 +17,18 @@
 package net.loxal.example.kotlin.ios.view
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import net.loxal.user.ios.model.Host
 import org.apache.http.HttpStatus
 import org.apache.http.client.methods.HttpGet
 import org.apache.http.impl.client.DefaultHttpClient
 import org.robovm.apple.coregraphics.CGRect
-import org.robovm.apple.uikit.UIButton
-import org.robovm.apple.uikit.UIButtonType
-import org.robovm.apple.uikit.UIColor
-import org.robovm.apple.uikit.UIControlState
-import org.robovm.apple.uikit.UIViewController
-
+import org.robovm.apple.iad.ADAdType
+import org.robovm.apple.iad.ADBannerView
+import org.robovm.apple.uikit.*
+import org.robovm.objc.annotation.CustomClass
 import java.io.ByteArrayOutputStream
 import java.net.URI
-import net.loxal.user.ios.model.Host
-import org.robovm.apple.uikit.NSTextAlignment
-import org.robovm.apple.uikit.UIControlContentHorizontalAlignment
 import java.util.Date
-import org.robovm.apple.iad.ADBannerView
-import org.robovm.apple.iad.ADAdType
-import org.robovm.objc.annotation.CustomClass
-import org.robovm.apple.uikit.UILabel
-import org.robovm.apple.uikit.UIFont
 
 CustomClass("RootViewController")
 class RootViewController : UIViewController() {
@@ -50,10 +41,10 @@ class RootViewController : UIViewController() {
     private val mapper = ObjectMapper()
 
     private val httpClient = DefaultHttpClient()
-    private val uri: URI = URI.create("http://rest-kit-test-v1.test.cf.hybris.com/who-am-i")
-    private val httpGet: HttpGet = HttpGet(uri);
+    private val uri: URI = URI.create("https://api.yaas.io/loxal/rest-kit/v1/who-am-i")
+    private val httpGet: HttpGet = HttpGet(uri)
 
-    {
+    init {
         mainView.setBackgroundColor(UIColor.white())
 
         initRefreshUi()

@@ -16,16 +16,12 @@
 
 package net.loxal.user.ios
 
-import org.robovm.apple.foundation.NSAutoreleasePool
-import org.robovm.apple.uikit.UIApplication
-import org.robovm.apple.uikit.UIApplicationDelegateAdapter
-import org.robovm.apple.uikit.UIApplicationLaunchOptions
-import org.robovm.apple.uikit.UIScreen
-import org.robovm.apple.uikit.UIWindow
-import kotlin.platform.platformStatic
 import net.loxal.example.kotlin.ios.view.RootViewController
-import java.util.logging.Logger
+import org.robovm.apple.foundation.NSAutoreleasePool
+import org.robovm.apple.uikit.*
 import org.robovm.objc.annotation.Property
+import java.util.logging.Logger
+import kotlin.platform.platformStatic
 
 class App : UIApplicationDelegateAdapter() {
     Property(selector = "window")
@@ -48,7 +44,7 @@ class App : UIApplicationDelegateAdapter() {
         this.window = UIWindow(UIScreen.getMainScreen().getNativeBounds())
     }
 
-    class object {
+    companion object {
         val LOG: Logger = Logger.getGlobal()
 
         platformStatic fun main(vararg args: String) {
