@@ -16,7 +16,7 @@
 
 package net.loxal.user.ios
 
-import net.loxal.example.kotlin.ios.view.RootViewController
+import net.loxal.user.ios.view.RootViewController
 import org.robovm.apple.foundation.NSAutoreleasePool
 import org.robovm.apple.uikit.*
 import org.robovm.objc.annotation.Property
@@ -41,7 +41,7 @@ class App : UIApplicationDelegateAdapter() {
     override fun getWindow() = window
 
     override fun setWindow(window: UIWindow?) {
-        this.window = UIWindow(UIScreen.getMainScreen().getNativeBounds())
+        this.window = UIWindow(UIScreen.getMainScreen().getApplicationFrame())
     }
 
     companion object {

@@ -28,7 +28,7 @@
         using either Maven or Gradle as the build tool.
     </description>
     <packaging>jar</packaging>
-    <version>1.1.0-RELEASE</version>
+    <version>1.1.2-RELEASE</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -70,13 +70,6 @@
                 <groupId>org.robovm</groupId>
                 <artifactId>robovm-maven-plugin</artifactId>
                 <version>${robovm.version}</version>
-                <configuration>
-                    <config>
-                        <mainClass>${robovm.mainClass}</mainClass>
-                        <os>ios</os>
-                        <arch>x86</arch>
-                    </config>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -108,7 +101,6 @@
                         <configuration>
                             <sourceDirs>
                                 <source>src/main/kotlin</source>
-                                <source>src/main/java</source>
                                 <source>src/main/resources</source>
                             </sourceDirs>
                         </configuration>
@@ -122,7 +114,6 @@
                         <configuration>
                             <sourceDirs>
                                 <source>src/test/kotlin</source>
-                                <source>src/test/java</source>
                                 <source>src/test/resources</source>
                             </sourceDirs>
                         </configuration>

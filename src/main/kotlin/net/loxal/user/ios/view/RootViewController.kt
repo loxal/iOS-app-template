@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package net.loxal.example.kotlin.ios.view
+package net.loxal.user.ios.view
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import net.loxal.user.ios.model.Host
