@@ -41,7 +41,7 @@ class App : UIApplicationDelegateAdapter() {
     override fun getWindow() = window
 
     override fun setWindow(window: UIWindow?) {
-        this.window = UIWindow(UIScreen.getMainScreen().getApplicationFrame())
+        this.window = UIWindow(UIScreen.getMainScreen().getNativeBounds())
     }
 
     companion object {
