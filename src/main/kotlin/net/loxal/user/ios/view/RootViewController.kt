@@ -34,6 +34,7 @@ CustomClass("RootViewController")
 class RootViewController : UIViewController() {
     private val mainView = getView()
     private val infoContainer = UILabel()
+    private val questionContainer = UILabel()
     private val timestamp = UILabel()
     private val refresher = UIButton.create(UIButtonType.RoundedRect)
     private val adBanner = ADBannerView(ADAdType.Banner)
@@ -48,10 +49,17 @@ class RootViewController : UIViewController() {
         mainView.setBackgroundColor(UIColor.white())
 
         initRefreshUi()
+        initQuestionContainer()
         initInfoContainer()
         initInfoTimestamp()
         initAdBanner()
         refreshStatus()
+    }
+
+    private fun initQuestionContainer() {
+        mainView.addSubview(questionContainer)
+
+        questionContainer.setFrame(CGRect(0.0, 40.0, mainView.getFrame().getMaxX(), 20.0))
     }
 
     private fun initInfoTimestamp() {
@@ -73,8 +81,8 @@ class RootViewController : UIViewController() {
     private fun initRefreshUi() {
         mainView.addSubview(refresher)
 
-        refresher.setFrame(CGRect(0.0, mainView.getFrame().getMidY(), mainView.getFrame().getMaxX(), 30.0))
-        refresher.setTitle("Refresh Status", UIControlState.Normal)
+        refresher.setFrame(CGRect(0.0, mainView.getFrame().getMidY(), mainView.getFrame().getMaxX() - 10, 30.0))
+        refresher.setTitle("Next", UIControlState.Normal)
         refresher.setContentHorizontalAlignment(UIControlContentHorizontalAlignment.Center)
 
         refresher.addOnTouchUpInsideListener({ control, event -> refreshStatus() })
@@ -85,6 +93,7 @@ class RootViewController : UIViewController() {
     private fun showInfo(info: String) {
         val host = mapper.readValue<Host>(info, javaClass<Host>())
         infoContainer.setText("Host name: ${host.name}  IP address: ${host.address}")
+        questionContainer.setText("Some question?")
         timestamp.setText("Last refresh: ${Date().toGMTString()}")
     }
 
