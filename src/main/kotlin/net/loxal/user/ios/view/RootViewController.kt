@@ -35,10 +35,11 @@ class RootViewController : UIViewController() {
     private val mainView = getView()
 
     private val questionContainer = UILabel()
-    private val answerOption = UIButton.create(UIButtonType.RoundedRect)
 
     private val nextQuestion = UIButton.create(UIButtonType.System)
     private val adBanner = ADBannerView(ADAdType.Banner)
+
+    private val answerContainer = UITableView()
 
     private val httpClient = DefaultHttpClient()
     private val uri: URI = URI.create("https://api.yaas.io/loxal/rest-kit/v1/ballot/poll/simpsons-852812b05-2023-48f2-a88a-6be56f1aa8b2")
@@ -63,9 +64,9 @@ class RootViewController : UIViewController() {
         questionContainer.setFont(UIFont.getSystemFont(UIFont.getSystemFontSize()))
         questionContainer.setFrame(CGRect(PADDING, 40.0, mainView.getFrame().getMaxX(), 20.0))
 
-        mainView.addSubview(answerOption)
-        answerOption.setFrame(CGRect(PADDING, 80.0, mainView.getFrame().getMaxX(), 20.0))
-        answerOption.setContentHorizontalAlignment(UIControlContentHorizontalAlignment.Left)
+        mainView.addSubview(answerContainer)
+        answerContainer.setFrame(CGRect(PADDING, 80.0, mainView.getFrame().getMaxX() - (PADDING + 5), 200.0))
+        answerContainer.setSeparatorStyle(UITableViewCellSeparatorStyle.SingleLine)
     }
 
     private fun initRefreshUi() {
@@ -87,14 +88,31 @@ class RootViewController : UIViewController() {
         showAnswerOptions(poll)
     }
 
-    private fun showQuestion(question: Poll) {
-        questionContainer.setText(question.question)
+    private fun showQuestion(poll: Poll) {
+        questionContainer.setText(poll.question)
     }
 
     private fun showAnswerOptions(question: Poll) {
         for (answerIdx in question.answers.indices) {
-            answerOption.setTitle("${answerIdx + 1}. ${question.answers.get(answerIdx)}", UIControlState.Normal)
+            showAnswerOption(answerIdx, question)
         }
+    }
+
+    private fun showAnswerOption(answerIdx: Int, question: Poll) {
+        val answerOption = UIButton.create(UIButtonType.RoundedRect)
+        answerOption.setContentHorizontalAlignment(UIControlContentHorizontalAlignment.Left)
+        val rowIdx = answerIdx + 1
+        answerOption.setTitle("${rowIdx}. ${question.answers.get(answerIdx)}", UIControlState.Normal)
+        answerOption.setFrame(CGRect(PADDING, 0.0, mainView.getFrame().getMaxX(), rowIdx * 50.0))
+        answerOption.addOnTouchUpInsideListener(UIControl.OnTouchUpInsideListener({ control, event ->
+            run {
+                App.LOG.info("rowIndex: ${rowIdx}")
+            }
+        }))
+
+        val answer = UITableViewCell()
+        answer.addSubview(answerOption)
+        answerContainer.addSubview(answer)
     }
 
     private fun fetchQuestion(): String {
@@ -115,7 +133,6 @@ class RootViewController : UIViewController() {
 
     private fun initAdBanner() {
         mainView.addSubview(adBanner)
-
         adBanner.setFrame(CGRect(0.0, mainView.getFrame().getMaxY() - adBanner.getFrame().getHeight(), 0.0, 0.0))
     }
 
