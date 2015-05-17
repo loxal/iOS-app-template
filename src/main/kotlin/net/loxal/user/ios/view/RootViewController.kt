@@ -18,7 +18,6 @@ package net.loxal.user.ios.view
 
 import net.loxal.user.ios.App
 import net.loxal.user.ios.model.Answer
-import net.loxal.user.ios.model.Host
 import net.loxal.user.ios.model.Question
 import org.apache.http.HttpStatus
 import org.apache.http.client.methods.HttpGet
@@ -30,7 +29,6 @@ import org.robovm.apple.uikit.*
 import org.robovm.objc.annotation.CustomClass
 import java.io.ByteArrayOutputStream
 import java.net.URI
-import java.util.Date
 
 CustomClass("RootViewController")
 class RootViewController : UIViewController() {
@@ -41,11 +39,11 @@ class RootViewController : UIViewController() {
     private val answerOption = UIButton.create(UIButtonType.RoundedRect)
 
     private val timestamp = UILabel()
-    private val refresher = UIButton.create(UIButtonType.System)
+    private val nextQuestion = UIButton.create(UIButtonType.System)
     private val adBanner = ADBannerView(ADAdType.Banner)
 
     private val httpClient = DefaultHttpClient()
-    private val uri: URI = URI.create("https://api.yaas.io/loxal/rest-kit/v1/who-am-i")
+    private val uri: URI = URI.create("https://api.yaas.io/loxal/rest-kit/v1/ballot/poll/simpsons-852812b05-2023-48f2-a88a-6be56f1aa8b2")
     private val httpGet: HttpGet = HttpGet(uri)
 
     private val question: Question
@@ -71,7 +69,7 @@ class RootViewController : UIViewController() {
         questionContainer.setFrame(CGRect(10.0, 40.0, mainView.getFrame().getMaxX(), 20.0))
 
         answerOption.setFrame(CGRect(10.0, 60.0, mainView.getFrame().getMaxX(), 20.0))
-        answerOption.setTitle(question.answers.get(answer.answerOptionIndex), UIControlState.Normal)
+        answerOption.setTitle(question.answers.get(2), UIControlState.Normal)
         answerOption.setContentHorizontalAlignment(UIControlContentHorizontalAlignment.Left)
         mainView.addSubview(answerOption)
     }
@@ -93,25 +91,23 @@ class RootViewController : UIViewController() {
     }
 
     private fun initRefreshUi() {
-        mainView.addSubview(refresher)
+        mainView.addSubview(nextQuestion)
 
-        refresher.setFrame(CGRect(0.0, mainView.getFrame().getMidY(), mainView.getFrame().getMaxX() - 10, 30.0))
-        refresher.setTitle("Next", UIControlState.Normal)
-        refresher.setContentHorizontalAlignment(UIControlContentHorizontalAlignment.Center)
+        nextQuestion.setFrame(CGRect(0.0, mainView.getFrame().getMaxY() - 40, mainView.getFrame().getMaxX(), 30.0))
+        nextQuestion.setTitle("Next", UIControlState.Normal)
+        nextQuestion.setContentHorizontalAlignment(UIControlContentHorizontalAlignment.Center)
 
-        refresher.addOnTouchUpInsideListener({ control, event -> refreshStatus() })
+        nextQuestion.addOnTouchUpInsideListener({ control, event -> refreshStatus() })
     }
 
-    private fun refreshStatus() = showInfo(fetchHostInfo())
+    private fun refreshStatus() = showQuestion(fetchQuestion())
 
-    private fun showInfo(info: String) {
-        val host = App.MAPPER.readValue<Host>(info, javaClass<Host>())
-        infoContainer.setText("Host name: ${host.name}  IP address: ${host.address}")
+    private fun showQuestion(question: String) {
+        val question = App.MAPPER.readValue<Question>(question, javaClass<Question>())
         questionContainer.setText(question.question)
-        timestamp.setText("Last refresh: ${Date().toGMTString()}")
     }
 
-    private fun fetchHostInfo(): String {
+    private fun fetchQuestion(): String {
         ByteArrayOutputStream().use { out ->
             val response = httpClient.execute(httpGet)
             val status = response.getStatusLine()

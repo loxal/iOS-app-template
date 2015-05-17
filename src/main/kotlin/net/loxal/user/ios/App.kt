@@ -16,6 +16,7 @@
 
 package net.loxal.user.ios
 
+import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import net.loxal.user.ios.view.RootViewController
 import org.robovm.apple.foundation.NSAutoreleasePool
@@ -49,6 +50,13 @@ class App : UIApplicationDelegateAdapter() {
         val LOG: Logger = Logger.getGlobal()
         val MAPPER = ObjectMapper()
 
+        init {
+            configureMapper()
+        }
+
+        private fun configureMapper() {
+            MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+        }
 
         platformStatic fun main(vararg args: String) {
             val autoreleasePool = NSAutoreleasePool()
