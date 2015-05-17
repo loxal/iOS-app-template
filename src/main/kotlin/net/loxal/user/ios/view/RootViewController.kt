@@ -17,8 +17,8 @@
 package net.loxal.user.ios.view
 
 import net.loxal.user.ios.App
-import net.loxal.user.ios.model.Answer
-import net.loxal.user.ios.model.Question
+import net.loxal.user.ios.model.Poll
+import net.loxal.user.ios.model.Vote
 import org.apache.http.HttpStatus
 import org.apache.http.client.methods.HttpGet
 import org.apache.http.impl.client.DefaultHttpClient
@@ -44,12 +44,12 @@ class RootViewController : UIViewController() {
     private val uri: URI = URI.create("https://api.yaas.io/loxal/rest-kit/v1/ballot/poll/simpsons-852812b05-2023-48f2-a88a-6be56f1aa8b2")
     private val httpGet: HttpGet = HttpGet(uri)
 
-    private val answer: Answer
+    private val answer: Vote
 
     init {
         mainView.setBackgroundColor(UIColor.white())
 
-        answer = Answer("first-question", 2)
+        answer = Vote("first-question", 2)
 
         initQuestionContainer()
         initRefreshUi()
@@ -81,9 +81,17 @@ class RootViewController : UIViewController() {
     private fun refreshStatus() = showQuestion(fetchQuestion())
 
     private fun showQuestion(jsonData: String) {
-        val question = App.MAPPER.readValue<Question>(jsonData, javaClass<Question>())
-        questionContainer.setText(question.question)
+        val poll = App.MAPPER.readValue<Poll>(jsonData, javaClass<Poll>())
 
+        showQuestion(poll)
+        showAnswerOptions(poll)
+    }
+
+    private fun showQuestion(question: Poll) {
+        questionContainer.setText(question.question)
+    }
+
+    private fun showAnswerOptions(question: Poll) {
         for (answerIdx in question.answers.indices) {
             answerOption.setTitle("${answerIdx + 1}. ${question.answers.get(answerIdx)}", UIControlState.Normal)
         }

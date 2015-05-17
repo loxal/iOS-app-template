@@ -19,17 +19,17 @@ package net.loxal.user.ios.model
 import javax.validation.constraints.Min
 import javax.validation.constraints.NotNull
 
-data class Question(NotNull var question: String = "", NotNull var answers: List<String> = listOf())
+data class Poll(NotNull var question: String = "", NotNull var answers: List<String> = listOf())
 
-data class Answer(
+data class Vote(
         NotNull var referenceQuestion: String = "",
         NotNull Min(value = 0) var answerOptionIndex: Int = 0
 ) {
     var user: String = "anonymous"
 
     companion object {
-        fun asUser(referenceQuestion: String, answerOptionIndex: Int, user: String): Answer {
-            val vote = Answer(referenceQuestion = referenceQuestion, answerOptionIndex = answerOptionIndex)
+        fun asUser(referenceQuestion: String, answerOptionIndex: Int, user: String): Vote {
+            val vote = Vote(referenceQuestion = referenceQuestion, answerOptionIndex = answerOptionIndex)
             vote.user = user
 
             return vote
