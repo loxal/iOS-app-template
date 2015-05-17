@@ -16,8 +16,10 @@
 
 package net.loxal.user.ios.view
 
-import com.fasterxml.jackson.databind.ObjectMapper
+import net.loxal.user.ios.App
+import net.loxal.user.ios.model.Answer
 import net.loxal.user.ios.model.Host
+import net.loxal.user.ios.model.Question
 import org.apache.http.HttpStatus
 import org.apache.http.client.methods.HttpGet
 import org.apache.http.impl.client.DefaultHttpClient
@@ -34,19 +36,26 @@ CustomClass("RootViewController")
 class RootViewController : UIViewController() {
     private val mainView = getView()
     private val infoContainer = UILabel()
-    private val questionContainer = UILabel()
-    private val timestamp = UILabel()
-    private val refresher = UIButton.create(UIButtonType.RoundedRect)
-    private val adBanner = ADBannerView(ADAdType.Banner)
 
-    private val mapper = ObjectMapper()
+    private val questionContainer = UILabel()
+    private val answerOption = UIButton.create(UIButtonType.RoundedRect)
+
+    private val timestamp = UILabel()
+    private val refresher = UIButton.create(UIButtonType.System)
+    private val adBanner = ADBannerView(ADAdType.Banner)
 
     private val httpClient = DefaultHttpClient()
     private val uri: URI = URI.create("https://api.yaas.io/loxal/rest-kit/v1/who-am-i")
     private val httpGet: HttpGet = HttpGet(uri)
 
+    private val question: Question
+    private val answer: Answer
+
     init {
         mainView.setBackgroundColor(UIColor.white())
+
+        question = Question("How long is a Bavarian Weißwurst sausage?", listOf("10 cm", "20 cm", "30 cm", "impossible to say"))
+        answer = Answer("first-question", 2)
 
         initRefreshUi()
         initQuestionContainer()
@@ -59,7 +68,12 @@ class RootViewController : UIViewController() {
     private fun initQuestionContainer() {
         mainView.addSubview(questionContainer)
 
-        questionContainer.setFrame(CGRect(0.0, 40.0, mainView.getFrame().getMaxX(), 20.0))
+        questionContainer.setFrame(CGRect(10.0, 40.0, mainView.getFrame().getMaxX(), 20.0))
+
+        answerOption.setFrame(CGRect(10.0, 60.0, mainView.getFrame().getMaxX(), 20.0))
+        answerOption.setTitle(question.answers.get(answer.answerOptionIndex), UIControlState.Normal)
+        answerOption.setContentHorizontalAlignment(UIControlContentHorizontalAlignment.Left)
+        mainView.addSubview(answerOption)
     }
 
     private fun initInfoTimestamp() {
@@ -91,9 +105,9 @@ class RootViewController : UIViewController() {
     private fun refreshStatus() = showInfo(fetchHostInfo())
 
     private fun showInfo(info: String) {
-        val host = mapper.readValue<Host>(info, javaClass<Host>())
+        val host = App.MAPPER.readValue<Host>(info, javaClass<Host>())
         infoContainer.setText("Host name: ${host.name}  IP address: ${host.address}")
-        questionContainer.setText("Some question?")
+        questionContainer.setText(question.question)
         timestamp.setText("Last refresh: ${Date().toGMTString()}")
     }
 

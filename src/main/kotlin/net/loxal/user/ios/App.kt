@@ -16,6 +16,7 @@
 
 package net.loxal.user.ios
 
+import com.fasterxml.jackson.databind.ObjectMapper
 import net.loxal.user.ios.view.RootViewController
 import org.robovm.apple.foundation.NSAutoreleasePool
 import org.robovm.apple.uikit.*
@@ -46,6 +47,8 @@ class App : UIApplicationDelegateAdapter() {
 
     companion object {
         val LOG: Logger = Logger.getGlobal()
+        val MAPPER = ObjectMapper()
+
 
         platformStatic fun main(vararg args: String) {
             val autoreleasePool = NSAutoreleasePool()

@@ -34,10 +34,18 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <robovm.version>1.2.0</robovm.version>
         <kotlin.version>0.11.91.4</kotlin.version>
+        <jersey.version>2.17</jersey.version>
         <robovm.mainClass>net.loxal.user.ios.App</robovm.mainClass>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.glassfish.jersey.ext</groupId>
+            <artifactId>jersey-bean-validation</artifactId>
+            <version>${jersey.version}</version>
+            <scope>compile</scope>
+            <!--hibernate-validator as transitive dependency is required at runtime-->
+        </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
