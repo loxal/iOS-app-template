@@ -61,17 +61,17 @@ class RootViewController : UIViewController() {
         mainView.addSubview(questionContainer)
 
         questionContainer.setFont(UIFont.getSystemFont(UIFont.getSystemFontSize()))
-        questionContainer.setFrame(CGRect(10.0, 40.0, mainView.getFrame().getMaxX(), 20.0))
+        questionContainer.setFrame(CGRect(PADDING, 40.0, mainView.getFrame().getMaxX(), 20.0))
 
         mainView.addSubview(answerOption)
-        answerOption.setFrame(CGRect(10.0, 80.0, mainView.getFrame().getMaxX(), 20.0))
+        answerOption.setFrame(CGRect(PADDING, 80.0, mainView.getFrame().getMaxX(), 20.0))
         answerOption.setContentHorizontalAlignment(UIControlContentHorizontalAlignment.Left)
     }
 
     private fun initRefreshUi() {
         mainView.addSubview(nextQuestion)
 
-        nextQuestion.setFrame(CGRect(0.0, mainView.getFrame().getMaxY() - 200, mainView.getFrame().getMaxX(), 20.0))
+        nextQuestion.setFrame(CGRect(0.0, mainView.getFrame().getMaxY() - 200, mainView.getFrame().getMaxX() - PADDING, 20.0))
         nextQuestion.setTitle("Next Question", UIControlState.Normal)
         nextQuestion.setContentHorizontalAlignment(UIControlContentHorizontalAlignment.Right)
 
@@ -83,7 +83,10 @@ class RootViewController : UIViewController() {
     private fun showQuestion(jsonData: String) {
         val question = App.MAPPER.readValue<Question>(jsonData, javaClass<Question>())
         questionContainer.setText(question.question)
-        answerOption.setTitle(question.answers.get(1), UIControlState.Normal)
+
+        for (answerIdx in question.answers.indices) {
+            answerOption.setTitle("${answerIdx + 1}. ${question.answers.get(answerIdx)}", UIControlState.Normal)
+        }
     }
 
     private fun fetchQuestion(): String {
@@ -106,5 +109,9 @@ class RootViewController : UIViewController() {
         mainView.addSubview(adBanner)
 
         adBanner.setFrame(CGRect(0.0, mainView.getFrame().getMaxY() - adBanner.getFrame().getHeight(), 0.0, 0.0))
+    }
+
+    companion object {
+        private val PADDING: Double = 10.0
     }
 }
