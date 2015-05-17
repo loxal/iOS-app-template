@@ -33,12 +33,10 @@ import java.net.URI
 CustomClass("RootViewController")
 class RootViewController : UIViewController() {
     private val mainView = getView()
-    private val infoContainer = UILabel()
 
     private val questionContainer = UILabel()
     private val answerOption = UIButton.create(UIButtonType.RoundedRect)
 
-    private val timestamp = UILabel()
     private val nextQuestion = UIButton.create(UIButtonType.System)
     private val adBanner = ADBannerView(ADAdType.Banner)
 
@@ -46,19 +44,15 @@ class RootViewController : UIViewController() {
     private val uri: URI = URI.create("https://api.yaas.io/loxal/rest-kit/v1/ballot/poll/simpsons-852812b05-2023-48f2-a88a-6be56f1aa8b2")
     private val httpGet: HttpGet = HttpGet(uri)
 
-    private val question: Question
     private val answer: Answer
 
     init {
         mainView.setBackgroundColor(UIColor.white())
 
-        question = Question("How long is a Bavarian Weißwurst sausage?", listOf("10 cm", "20 cm", "30 cm", "impossible to say"))
         answer = Answer("first-question", 2)
 
-        initRefreshUi()
         initQuestionContainer()
-        initInfoContainer()
-        initInfoTimestamp()
+        initRefreshUi()
         initAdBanner()
         refreshStatus()
     }
@@ -66,45 +60,30 @@ class RootViewController : UIViewController() {
     private fun initQuestionContainer() {
         mainView.addSubview(questionContainer)
 
+        questionContainer.setFont(UIFont.getSystemFont(UIFont.getSystemFontSize()))
         questionContainer.setFrame(CGRect(10.0, 40.0, mainView.getFrame().getMaxX(), 20.0))
 
-        answerOption.setFrame(CGRect(10.0, 60.0, mainView.getFrame().getMaxX(), 20.0))
-        answerOption.setTitle(question.answers.get(2), UIControlState.Normal)
-        answerOption.setContentHorizontalAlignment(UIControlContentHorizontalAlignment.Left)
         mainView.addSubview(answerOption)
-    }
-
-    private fun initInfoTimestamp() {
-        mainView.addSubview(timestamp)
-
-        timestamp.setFrame(CGRect(0.0, 120.0, mainView.getFrame().getMaxX(), 100.0))
-        timestamp.setTextAlignment(NSTextAlignment.Center)
-        timestamp.setFont(UIFont.getSystemFont(UIFont.getSystemFontSize()))
-    }
-
-    private fun initInfoContainer() {
-        mainView.addSubview(infoContainer)
-
-        infoContainer.setFrame(CGRect(0.0, 100.0, mainView.getFrame().getMaxX(), 20.0))
-        infoContainer.setTextAlignment(NSTextAlignment.Center)
-        infoContainer.setFont(UIFont.getSystemFont(UIFont.getSystemFontSize()))
+        answerOption.setFrame(CGRect(10.0, 80.0, mainView.getFrame().getMaxX(), 20.0))
+        answerOption.setContentHorizontalAlignment(UIControlContentHorizontalAlignment.Left)
     }
 
     private fun initRefreshUi() {
         mainView.addSubview(nextQuestion)
 
-        nextQuestion.setFrame(CGRect(0.0, mainView.getFrame().getMaxY() - 40, mainView.getFrame().getMaxX(), 30.0))
-        nextQuestion.setTitle("Next", UIControlState.Normal)
-        nextQuestion.setContentHorizontalAlignment(UIControlContentHorizontalAlignment.Center)
+        nextQuestion.setFrame(CGRect(0.0, mainView.getFrame().getMaxY() - 200, mainView.getFrame().getMaxX(), 20.0))
+        nextQuestion.setTitle("Next Question", UIControlState.Normal)
+        nextQuestion.setContentHorizontalAlignment(UIControlContentHorizontalAlignment.Right)
 
         nextQuestion.addOnTouchUpInsideListener({ control, event -> refreshStatus() })
     }
 
     private fun refreshStatus() = showQuestion(fetchQuestion())
 
-    private fun showQuestion(question: String) {
-        val question = App.MAPPER.readValue<Question>(question, javaClass<Question>())
+    private fun showQuestion(jsonData: String) {
+        val question = App.MAPPER.readValue<Question>(jsonData, javaClass<Question>())
         questionContainer.setText(question.question)
+        answerOption.setTitle(question.answers.get(1), UIControlState.Normal)
     }
 
     private fun fetchQuestion(): String {

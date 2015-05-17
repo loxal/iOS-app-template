@@ -19,7 +19,7 @@ package net.loxal.user.ios.model
 import javax.validation.constraints.Min
 import javax.validation.constraints.NotNull
 
-data class Question(NotNull var question: String = "", NotNull var answers: List<String> = arrayListOf())
+data class Question(NotNull var question: String = "", NotNull var answers: List<String> = listOf())
 
 data class Answer(
         NotNull var referenceQuestion: String = "",
