@@ -1,12 +1,12 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="HelloWorld (does not work, this is just a dummy configuration)" type="Application" factoryName="Application" singleton="true">
+  <configuration default="false" name="App (does not work, this is just a dummy configuration)" type="Application" factoryName="Application" singleton="true">
     <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
       <pattern>
         <option name="PATTERN" value="org.robovm.samples.helloworld.*" />
         <option name="ENABLED" value="true" />
       </pattern>
     </extension>
-    <option name="MAIN_CLASS_NAME" value="net.loxal.example.ios.HelloWorld" />
+    <option name="MAIN_CLASS_NAME" value="net.loxal.user.ios.App" />
     <option name="VM_PARAMETERS" value="" />
     <option name="PROGRAM_PARAMETERS" value="" />
     <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
