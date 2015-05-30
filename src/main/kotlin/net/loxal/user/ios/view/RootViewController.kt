@@ -17,8 +17,10 @@
 package net.loxal.user.ios.view
 
 import net.loxal.user.ios.App
+import net.loxal.user.ios.model.ErrorMessage
 import net.loxal.user.ios.model.Poll
 import net.loxal.user.ios.model.Vote
+import org.apache.http.HttpStatus
 import org.apache.http.client.methods.HttpGet
 import org.apache.http.impl.client.DefaultHttpClient
 import org.robovm.apple.coregraphics.CGRect
@@ -78,14 +80,16 @@ class RootViewController : UIViewController() {
         nextQuestion.addOnTouchUpInsideListener({ control, event -> refreshStatus() })
     }
 
-    private fun refreshStatus() = showQuestion(fetchQuestion())
+    private fun refreshStatus() = showQuestion(fetchResource())
 
-    private fun showQuestion(jsonData: String) {
-        App.LOG.info("next>>>>>>>>>>>>>>>>")
-        val poll = App.MAPPER.readValue<Poll>(jsonData, javaClass<Poll>())
-
-        showQuestion(poll)
-        showAnswerOptions(poll)
+    private fun showQuestion(resource: Any) {
+        when (resource) {
+            is Poll -> {
+                showQuestion(resource)
+                showAnswerOptions(resource)
+            }
+            is ErrorMessage -> questionContainer.setText(resource.message)
+        }
     }
 
     private fun showQuestion(poll: Poll) {
@@ -115,21 +119,21 @@ class RootViewController : UIViewController() {
         answerContainer.addSubview(answer)
     }
 
-    private fun fetchQuestion(): String {
+    private fun fetchResource(): Any {
         ByteArrayOutputStream().use { out ->
             val response = httpClient.execute(httpGet)
             val status = response.getStatusLine()
             val entity = response.getEntity()
-            //            if (HttpStatus.SC_OK == status.getStatusCode()) {
-                entity.writeTo(out)
-                return out.toString()
-            //            }
-            //            else {
-            //                            entity.getContent().close()
-            //            }
+            entity.writeTo(out)
+            val jsonData = out.toString()
+            val resource: Any
+            if (HttpStatus.SC_OK == status.getStatusCode()) {
+                resource = App.MAPPER.readValue<Poll>(jsonData, javaClass<Poll>())
+            } else {
+                resource = App.MAPPER.readValue<ErrorMessage>(jsonData, javaClass<ErrorMessage>())
+            }
+            return resource
         }
-
-        //        return "I’m very sorry, this should not happen."
     }
 
     private fun initAdBanner() {
