@@ -21,8 +21,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>net.loxal.example.ios</groupId>
-    <artifactId>robovm-template-ios-app</artifactId>
-    <name>RoboVM Template iOS App</name>
+    <artifactId>questionnaire-ios-app</artifactId>
+    <name>Q &amp; S Questionnaire</name>
     <description>
         A template project for writing iOS apps in both Kotlin and/or Java
         using either Maven or Gradle as the build tool.
@@ -32,7 +32,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <robovm.version>1.2.0</robovm.version>
+        <robovm.version>1.3.0</robovm.version>
         <kotlin.version>0.12.213</kotlin.version>
         <jersey.version>2.17</jersey.version>
         <robovm.mainClass>net.loxal.user.ios.App</robovm.mainClass>
