@@ -19,7 +19,6 @@ package net.loxal.user.ios.view
 import net.loxal.user.ios.App
 import net.loxal.user.ios.model.Poll
 import net.loxal.user.ios.model.Vote
-import org.apache.http.HttpStatus
 import org.apache.http.client.methods.HttpGet
 import org.apache.http.impl.client.DefaultHttpClient
 import org.robovm.apple.coregraphics.CGRect
@@ -53,7 +52,7 @@ class RootViewController : UIViewController() {
         answer = Vote("first-question", 2)
 
         initQuestionContainer()
-        initRefreshUi()
+        initNextQuestion()
         initAdBanner()
         refreshStatus()
     }
@@ -65,14 +64,14 @@ class RootViewController : UIViewController() {
         questionContainer.setFrame(CGRect(PADDING, 40.0, mainView.getFrame().getMaxX(), 20.0))
 
         mainView.addSubview(answerContainer)
-        answerContainer.setFrame(CGRect(PADDING, 80.0, mainView.getFrame().getMaxX() - (PADDING + 5), 200.0))
+        answerContainer.setFrame(CGRect(PADDING, 80.0, mainView.getFrame().getMaxX() - (PADDING + 5), 400.0))
         answerContainer.setSeparatorStyle(UITableViewCellSeparatorStyle.SingleLine)
     }
 
-    private fun initRefreshUi() {
+    private fun initNextQuestion() {
         mainView.addSubview(nextQuestion)
 
-        nextQuestion.setFrame(CGRect(0.0, mainView.getFrame().getMaxY() - 200, mainView.getFrame().getMaxX() - PADDING, 20.0))
+        nextQuestion.setFrame(CGRect(0.0, mainView.getFrame().getMaxY() - 150, mainView.getFrame().getMaxX() - PADDING, 20.0))
         nextQuestion.setTitle("Next Question", UIControlState.Normal)
         nextQuestion.setContentHorizontalAlignment(UIControlContentHorizontalAlignment.Right)
 
@@ -82,6 +81,7 @@ class RootViewController : UIViewController() {
     private fun refreshStatus() = showQuestion(fetchQuestion())
 
     private fun showQuestion(jsonData: String) {
+        App.LOG.info("next>>>>>>>>>>>>>>>>")
         val poll = App.MAPPER.readValue<Poll>(jsonData, javaClass<Poll>())
 
         showQuestion(poll)
@@ -98,11 +98,11 @@ class RootViewController : UIViewController() {
         }
     }
 
-    private fun showAnswerOption(answerIdx: Int, question: Poll) {
+    private fun showAnswerOption(answerIdx: Int, poll: Poll) {
         val answerOption = UIButton.create(UIButtonType.RoundedRect)
         answerOption.setContentHorizontalAlignment(UIControlContentHorizontalAlignment.Left)
         val rowIdx = answerIdx + 1
-        answerOption.setTitle("${rowIdx}. ${question.answers.get(answerIdx)}", UIControlState.Normal)
+        answerOption.setTitle("${rowIdx}. ${poll.answers.get(answerIdx)}", UIControlState.Normal)
         answerOption.setFrame(CGRect(PADDING, 0.0, mainView.getFrame().getMaxX(), rowIdx * 50.0))
         answerOption.addOnTouchUpInsideListener(UIControl.OnTouchUpInsideListener({ control, event ->
             run {
@@ -120,15 +120,16 @@ class RootViewController : UIViewController() {
             val response = httpClient.execute(httpGet)
             val status = response.getStatusLine()
             val entity = response.getEntity()
-            if (HttpStatus.SC_OK == status.getStatusCode()) {
+            //            if (HttpStatus.SC_OK == status.getStatusCode()) {
                 entity.writeTo(out)
                 return out.toString()
-            } else {
-                entity.getContent().close()
-            }
+            //            }
+            //            else {
+            //                entity.getContent().close()
+            //            }
         }
 
-        return "I’m very sorry, this should not happen."
+        //        return "I’m very sorry, this should not happen."
     }
 
     private fun initAdBanner() {
