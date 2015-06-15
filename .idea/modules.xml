@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/iOS App Template.iml" filepath="$PROJECT_DIR$/iOS App Template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/questionnaire-ios-app.iml" filepath="$PROJECT_DIR$/questionnaire-ios-app.iml" />
     </modules>
   </component>
 </project>

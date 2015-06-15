@@ -22,7 +22,7 @@
 
     <groupId>net.loxal.example.ios</groupId>
     <artifactId>questionnaire-ios-app</artifactId>
-    <name>Q &amp; S Questionnaire</name>
+    <name>Q &amp; A Questionnaire</name>
     <description>
         A template project for writing iOS apps in both Kotlin and/or Java
         using either Maven or Gradle as the build tool.
