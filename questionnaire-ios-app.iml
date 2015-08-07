@@ -38,8 +38,8 @@
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.5.3" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib:0.12.1230" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-runtime:0.12.1230" level="project" />
-    <orderEntry type="library" name="Maven: org.robovm:robovm-rt:1.5.0" level="project" />
-    <orderEntry type="library" name="Maven: org.robovm:robovm-cocoatouch:1.5.0" level="project" />
-    <orderEntry type="library" name="Maven: org.robovm:robovm-objc:1.5.0" level="project" />
+    <orderEntry type="library" name="Maven: org.robovm:robovm-rt:1.6.0" level="project" />
+    <orderEntry type="library" name="Maven: org.robovm:robovm-cocoatouch:1.6.0" level="project" />
+    <orderEntry type="library" name="Maven: org.robovm:robovm-objc:1.6.0" level="project" />
   </component>
 </module>
