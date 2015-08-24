@@ -43,7 +43,7 @@ class RootViewController : UIViewController() {
     private val answerContainer = UITableView()
 
     private val httpClient = DefaultHttpClient()
-    private val uri: URI = URI.create("https://api.yaas.io/loxal/rest-kit/v1/ballot/poll/simpsons-852812b05-2023-48f2-a88a-6be56f1aa8b2")
+    private val uri: URI = URI.create("https://api.yaas.io/loxal/rest-kit/v1/ballot/poll/simpsons-1bd81e658-380e-4241-bbf6-28d5102ce0ec")
     private val httpGet: HttpGet = HttpGet(uri)
 
     private val answer: Vote

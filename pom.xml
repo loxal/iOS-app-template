@@ -28,13 +28,13 @@
         using either Maven or Gradle as the build tool.
     </description>
     <packaging>jar</packaging>
-    <version>1.1.5-RELEASE</version>
+    <version>1.1.6-RELEASE</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <robovm.version>1.6.0</robovm.version>
         <kotlin.version>0.12.1230</kotlin.version>
-        <jersey.version>2.19</jersey.version>
+        <jersey.version>2.21</jersey.version>
         <robovm.mainClass>net.loxal.user.ios.App</robovm.mainClass>
     </properties>
 
