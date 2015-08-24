@@ -44,6 +44,13 @@
         <string>LaunchScreen</string>
         <key>UIMainStoryboardFile</key>
         <string>Main</string>
+        <key>MinimumOSVersion</key>
+        <string>8.0</string>
+        <key>UIDeviceFamily</key>
+        <array>
+            <integer>1</integer>
+            <integer>2</integer>
+        </array>
         <key>UIRequiredDeviceCapabilities</key>
         <array>
             <string>armv7</string>

@@ -18,33 +18,32 @@ package net.loxal.user.ios
 
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
-import net.loxal.user.ios.view.RootViewController
 import org.robovm.apple.foundation.NSAutoreleasePool
-import org.robovm.apple.uikit.*
-import org.robovm.objc.annotation.Property
+import org.robovm.apple.uikit.UIApplication
+import org.robovm.apple.uikit.UIApplicationDelegateAdapter
 import java.util.logging.Logger
 import kotlin.platform.platformStatic
 
 class App : UIApplicationDelegateAdapter() {
-    Property(selector = "window")
-    private final var window: UIWindow? = getWindow()
-
-    override fun didFinishLaunching(app: UIApplication?, launchOptions: UIApplicationLaunchOptions?): Boolean {
-        configureWindow()
-
-        return true
-    }
-
-    private fun configureWindow() {
-        window?.setRootViewController(RootViewController())
-        window?.makeKeyAndVisible()
-    }
-
-    override fun getWindow() = window
-
-    override fun setWindow(window: UIWindow?) {
-        this.window = UIWindow(UIScreen.getMainScreen().getNativeBounds())
-    }
+    //    Property(selector = "window")
+    //    private final var window: UIWindow? = getWindow()
+    //
+    //    override fun didFinishLaunching(app: UIApplication?, launchOptions: UIApplicationLaunchOptions?): Boolean {
+    //        configureWindow()
+    //
+    //        return true
+    //    }
+    //
+    //    private fun configureWindow() {
+    //        window?.setRootViewController(RootViewController())
+    //        window?.makeKeyAndVisible()
+    //    }
+    //
+    //    override fun getWindow() = window
+    //
+    //    override fun setWindow(window: UIWindow?) {
+    //        this.window = UIWindow(UIScreen.getMainScreen().getNativeBounds())
+    //    }
 
     companion object {
         val LOG: Logger = Logger.getGlobal()

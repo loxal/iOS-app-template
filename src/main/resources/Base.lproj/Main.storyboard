@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  ~ Copyright 2015 Alexander Orlov <alexander.orlov@loxal.net>
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706"
+          systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES"
+          useTraitCollections="YES" initialViewController="Rw5-ns-KcI">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--RootViewController-->
+        <scene sceneID="HF5-hW-DZA">
+            <objects>
+                <viewController title="RootViewController" id="Rw5-ns-KcI" customClass="RootViewController"
+                                sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WrT-94-kTm"/>
+                        <viewControllerLayoutGuide type="bottom" id="GRf-jy-2iC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xOT-TG-81E">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES"
+                                    contentHorizontalAlignment="center" contentVerticalAlignment="center"
+                                    buttonType="roundedRect" lineBreakMode="middleTruncation"
+                                    translatesAutoresizingMaskIntoConstraints="NO" id="JAJ-Gw-8zl">
+                                <rect key="frame" x="374" y="424" width="210" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="WHQ-Y9-R4e"/>
+                                    <constraint firstAttribute="width" constant="100" id="wuc-nD-XY0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Next Question">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=regular" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="300" y="311" width="200" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="clicked" destination="Rw5-ns-KcI" eventType="touchUpInside"
+                                            id="aCH-Ws-MTg"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left"
+                                   horizontalHuggingPriority="251" verticalHuggingPriority="251" text=""
+                                   textAlignment="center" lineBreakMode="tailTruncation"
+                                   baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO"
+                                   translatesAutoresizingMaskIntoConstraints="NO" id="6eT-2n-aTU">
+                                <rect key="frame" x="160" y="128" width="280" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="FGA-h8-tHG"/>
+                                    <constraint firstAttribute="height" constant="44" id="KAs-B5-4BP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1"
+                                       colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left"
+                                   horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES"
+                                   text="Default Label" lineBreakMode="tailTruncation"
+                                   baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO"
+                                   translatesAutoresizingMaskIntoConstraints="NO" id="BNp-DA-dQj">
+                                <rect key="frame" x="52" y="60" width="388" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1"
+                                       colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES"
+                                    contentHorizontalAlignment="center" contentVerticalAlignment="center"
+                                    buttonType="roundedRect" lineBreakMode="middleTruncation"
+                                    translatesAutoresizingMaskIntoConstraints="NO" id="SuX-1H-Q5f">
+                                <rect key="frame" x="42" y="209" width="93" height="30"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="JAJ-Gw-8zl" secondAttribute="centerY"
+                                        id="Azx-fk-TQ9"/>
+                            <constraint firstAttribute="centerY" secondItem="6eT-2n-aTU" secondAttribute="centerY"
+                                        multiplier="2" id="ZYa-tH-0dQ"/>
+                            <constraint firstAttribute="centerX" secondItem="JAJ-Gw-8zl" secondAttribute="centerX"
+                                        id="hqe-pz-zAk"/>
+                            <constraint firstAttribute="centerX" secondItem="6eT-2n-aTU" secondAttribute="centerX"
+                                        id="ll8-9H-VGW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="label" destination="6eT-2n-aTU" id="BRp-KC-rUI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MK6-Qu-SKr" userLabel="First Responder"
+                             sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="625" y="507"/>
+        </scene>
+    </scenes>
+</document>

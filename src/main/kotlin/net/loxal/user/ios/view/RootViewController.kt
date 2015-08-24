@@ -28,11 +28,25 @@ import org.robovm.apple.iad.ADAdType
 import org.robovm.apple.iad.ADBannerView
 import org.robovm.apple.uikit.*
 import org.robovm.objc.annotation.CustomClass
+import org.robovm.objc.annotation.IBAction
+import org.robovm.objc.annotation.IBOutlet
 import java.io.ByteArrayOutputStream
 import java.net.URI
 
 CustomClass("RootViewController")
 class RootViewController : UIViewController() {
+    private var label = UILabel()
+
+    IBOutlet
+    fun setLabel(label: UILabel): Unit {
+        this.label = label
+    }
+
+    IBAction
+    fun clicked() {
+        label.setText("Here you go!")
+    }
+
     private val mainView = getView()
 
     private val questionContainer = UILabel()
@@ -67,13 +81,13 @@ class RootViewController : UIViewController() {
 
         mainView.addSubview(answerContainer)
         answerContainer.setFrame(CGRect(PADDING, 80.0, mainView.getFrame().getMaxX() - (PADDING + 5), 400.0))
-        answerContainer.setSeparatorStyle(UITableViewCellSeparatorStyle.SingleLine)
+        answerContainer.setSeparatorStyle(UITableViewCellSeparatorStyle.None)
     }
 
     private fun initNextQuestion() {
         mainView.addSubview(nextQuestion)
 
-        nextQuestion.setFrame(CGRect(0.0, mainView.getFrame().getMaxY() - 150, mainView.getFrame().getMaxX() - PADDING, 20.0))
+        nextQuestion.setFrame(CGRect(0.0, mainView.getFrame().getMidY(), mainView.getFrame().getMidX() + 100, 20.0))
         nextQuestion.setTitle("Next Question", UIControlState.Normal)
         nextQuestion.setContentHorizontalAlignment(UIControlContentHorizontalAlignment.Right)
 

@@ -24,6 +24,15 @@
         <resource>
             <directory>src/main/resources</directory>
         </resource>
+        <resource>
+            <directory>src/main/resources/Images.xcassets</directory>
+        </resource>
+        <resource>
+            <directory>src/main/resources/Images.xcassets/AppIcon.appiconset</directory>
+        </resource>
+        <resource>
+            <directory>src/main/resources/Images.xcassets/LaunchImage.launchimage</directory>
+        </resource>
     </resources>
     <target>ios</target>
     <iosInfoPList>Info.plist.xml</iosInfoPList>
