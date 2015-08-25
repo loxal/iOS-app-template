@@ -42,20 +42,26 @@ class RootViewController : UIViewController() {
         this.label = label
     }
 
-    IBAction
-    fun clicked() {
-        label.setText("Here you go!")
+    IBOutlet
+    fun setQuestionContainer(label: UILabel): Unit {
+        this.questionContainer = label
     }
 
     IBAction
-    fun nexti() {
+    fun clicked() {
+        label.setText("Here you go!")
+        questionContainer.setText("AHAAAAAA")
+    }
+
+    IBAction
+    fun nextQuestion() {
         label.setText("AHA!!!!!")
-        refreshStatus()
+        //        refreshStatus()
     }
 
     private val mainView = getView()
 
-    private val questionContainer = UILabel()
+    private var questionContainer = UILabel()
 
     private val nextQuestion = UIButton.create(UIButtonType.System)
     private val adBanner = ADBannerView(ADAdType.Banner)
