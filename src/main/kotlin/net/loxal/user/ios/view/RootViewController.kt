@@ -47,6 +47,12 @@ class RootViewController : UIViewController() {
         label.setText("Here you go!")
     }
 
+    IBAction
+    fun nexti() {
+        label.setText("AHA!!!!!")
+        refreshStatus()
+    }
+
     private val mainView = getView()
 
     private val questionContainer = UILabel()
