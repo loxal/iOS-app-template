@@ -22,8 +22,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		FAE70EF71B8BF266009988A9 /* RootViewControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = RootViewControllerTests.xctest; path = "/Users/alex/my/project/loxal/iOS-app-template/src/main/resources/build/Debug-iphoneos/RootViewControllerTests.xctest"; sourceTree = "<absolute>"; };
-		FAE70EF81B8BF278009988A9 /* RootViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = RootViewController.app; path = "/Users/alex/my/project/loxal/iOS-app-template/src/main/resources/build/Debug-iphoneos/RootViewController.app"; sourceTree = "<absolute>"; };
+		FA1FE2631B8BF2F50068B399 /* RootViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = RootViewController.app; path = "/Users/alex/my/project/loxal/iOS-app-template/src/main/resources/build/Debug-iphoneos/RootViewController.app"; sourceTree = "<absolute>"; };
+		FA1FE2641B8BF2F50068B399 /* RootViewControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = RootViewControllerTests.xctest; path = "/Users/alex/my/project/loxal/iOS-app-template/src/main/resources/build/Debug-iphoneos/RootViewControllerTests.xctest"; sourceTree = "<absolute>"; };
 		FAE70EF91B8BF279009988A9 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		FAE70EFC1B8BF281009988A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,7 +71,7 @@
 			);
 			name = RootViewController;
 			productName = aha;
-			productReference = FAE70EF81B8BF278009988A9 /* RootViewController.app */;
+			productReference = FA1FE2631B8BF2F50068B399 /* RootViewController.app */;
 			productType = "com.apple.product-type.application";
 		};
 		FA0D9EEB1B8BEFE3001BD4B3 /* RootViewControllerTests */ = {
@@ -89,7 +89,7 @@
 			);
 			name = RootViewControllerTests;
 			productName = ahaTests;
-			productReference = FAE70EF71B8BF266009988A9 /* RootViewControllerTests.xctest */;
+			productReference = FA1FE2641B8BF2F50068B399 /* RootViewControllerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
