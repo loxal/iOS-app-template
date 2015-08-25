@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/alex/Desktop/aha/RootViewController.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>
