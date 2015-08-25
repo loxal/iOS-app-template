@@ -5,19 +5,15 @@ class RootViewController: UIViewController {
     @IBOutlet
     var questionContainer: UILabel?
     
-    @IBOutlet
-    var label: UILabel?
-    
     @IBAction
-    func nextQuestion(){
-    }
+    func nextQuestion(){}
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//    }
+//
+//    override func didReceiveMemoryWarning() {
+//        super.didReceiveMemoryWarning()
+//    }
 }
 
