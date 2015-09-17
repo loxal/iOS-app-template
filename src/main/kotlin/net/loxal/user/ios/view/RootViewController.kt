@@ -32,34 +32,30 @@ import org.robovm.objc.annotation.IBAction
 import org.robovm.objc.annotation.IBOutlet
 import java.io.ByteArrayOutputStream
 import java.net.URI
+import javax.ws.rs.client.ClientBuilder
 
-CustomClass("RootViewController")
+@CustomClass("RootViewController")
 class RootViewController : UIViewController() {
-    private var label = UILabel()
-
-    IBOutlet
-    fun setLabel(label: UILabel): Unit {
-        this.label = label
-    }
-
-    IBOutlet
-    fun setQuestionContainer(label: UILabel): Unit {
+    @IBOutlet
+    private fun setQuestionContainer(label: UILabel) {
         this.questionContainer = label
     }
 
-    IBAction
-    fun clicked() {
-        label.setText("Here you go!")
-        questionContainer.setText("AHAAAAAA")
+    @IBAction
+    private fun nextQuestion() {
+        questionContainer.text = "$uri"
+        App.LOG.warning("$uri")
+
+        val c = ClientBuilder.newBuilder().build()
+        val u = c.target("https://api.yaas.io/loxal/rest-kit/v1/ballot/poll/simpsons-1bd81e658-380e-4241-bbf6-28d5102ce0ec")
+        val rg = u.request().get();
+        val o = rg.readEntity(String::class.java)
+        val resource = App.MAPPER.readValue<Poll>(o, Poll::class.java)
+        questionContainer.text = "${resource.question}"
+
     }
 
-    IBAction
-    fun nextQuestion() {
-        label.setText("AHA!!!!!")
-        //        refreshStatus()
-    }
-
-    private val mainView = getView()
+    private val mainView = view
 
     private var questionContainer = UILabel()
 
@@ -69,39 +65,44 @@ class RootViewController : UIViewController() {
     private val answerContainer = UITableView()
 
     private val httpClient = DefaultHttpClient()
-    private val uri: URI = URI.create("https://api.yaas.io/loxal/rest-kit/v1/ballot/poll/simpsons-1bd81e658-380e-4241-bbf6-28d5102ce0ec")
+    private var uri: URI = URI.create("https://api.yaas.io/loxal/rest-kit/v1/ballot/poll/simpsons-1bd81e658-380e-4241-bbf6-28d5102ce0ec")
     private val httpGet: HttpGet = HttpGet(uri)
 
     private val answer: Vote
 
     init {
-        mainView.setBackgroundColor(UIColor.white())
-
+        mainView.backgroundColor = UIColor.white()
+        //
         answer = Vote("first-question", 2)
-
+        //
         initQuestionContainer()
         initNextQuestion()
         initAdBanner()
         refreshStatus()
+
+        App.LOG.warning("$uri")
+        App.LOG.warning("$uri")
+        App.LOG.warning("$uri")
+        App.LOG.warning("$uri")
     }
 
     private fun initQuestionContainer() {
         mainView.addSubview(questionContainer)
 
-        questionContainer.setFont(UIFont.getSystemFont(UIFont.getSystemFontSize()))
-        questionContainer.setFrame(CGRect(PADDING, 40.0, mainView.getFrame().getMaxX(), 20.0))
+        questionContainer.font = UIFont.getSystemFont(UIFont.getSystemFontSize())
+        questionContainer.frame = CGRect(PADDING, 40.0, mainView.getFrame().getMaxX(), 20.0)
 
         mainView.addSubview(answerContainer)
-        answerContainer.setFrame(CGRect(PADDING, 80.0, mainView.getFrame().getMaxX() - (PADDING + 5), 400.0))
-        answerContainer.setSeparatorStyle(UITableViewCellSeparatorStyle.None)
+        answerContainer.frame = CGRect(PADDING, 80.0, mainView.getFrame().getMaxX() - (PADDING + 5), 400.0)
+        answerContainer.separatorStyle = UITableViewCellSeparatorStyle.None
     }
 
     private fun initNextQuestion() {
         mainView.addSubview(nextQuestion)
 
-        nextQuestion.setFrame(CGRect(0.0, mainView.getFrame().getMidY(), mainView.getFrame().getMidX() + 100, 20.0))
+        nextQuestion.frame = CGRect(0.0, mainView.getFrame().getMidY(), mainView.getFrame().getMidX() + 100, 20.0)
         nextQuestion.setTitle("Next Question", UIControlState.Normal)
-        nextQuestion.setContentHorizontalAlignment(UIControlContentHorizontalAlignment.Right)
+        nextQuestion.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Right
 
         nextQuestion.addOnTouchUpInsideListener({ control, event -> refreshStatus() })
     }
@@ -114,12 +115,12 @@ class RootViewController : UIViewController() {
                 showQuestion(resource)
                 showAnswerOptions(resource)
             }
-            is ErrorMessage -> questionContainer.setText(resource.message)
+            is ErrorMessage -> questionContainer.text = resource.message
         }
     }
 
     private fun showQuestion(poll: Poll) {
-        questionContainer.setText(poll.question)
+        questionContainer.text = poll.question
     }
 
     private fun showAnswerOptions(question: Poll) {
@@ -130,10 +131,10 @@ class RootViewController : UIViewController() {
 
     private fun showAnswerOption(answerIdx: Int, poll: Poll) {
         val answerOption = UIButton.create(UIButtonType.RoundedRect)
-        answerOption.setContentHorizontalAlignment(UIControlContentHorizontalAlignment.Left)
+        answerOption.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
         val rowIdx = answerIdx + 1
-        answerOption.setTitle("${rowIdx}. ${poll.answers.get(answerIdx)}", UIControlState.Normal)
-        answerOption.setFrame(CGRect(PADDING, 0.0, mainView.getFrame().getMaxX(), rowIdx * 50.0))
+        answerOption.setTitle("$rowIdx. ${poll.answers.get(answerIdx)}", UIControlState.Normal)
+        answerOption.frame = CGRect(PADDING, 0.0, mainView.frame.maxX, rowIdx * 50.0)
         answerOption.addOnTouchUpInsideListener(UIControl.OnTouchUpInsideListener({ control, event ->
             run {
                 App.LOG.info("rowIndex: ${rowIdx}")
@@ -148,15 +149,15 @@ class RootViewController : UIViewController() {
     private fun fetchResource(): Any {
         ByteArrayOutputStream().use { out ->
             val response = httpClient.execute(httpGet)
-            val status = response.getStatusLine()
-            val entity = response.getEntity()
+            val status = response.statusLine
+            val entity = response.entity
             entity.writeTo(out)
             val jsonData = out.toString()
             val resource: Any
-            if (HttpStatus.SC_OK == status.getStatusCode()) {
-                resource = App.MAPPER.readValue<Poll>(jsonData, javaClass<Poll>())
+            if (HttpStatus.SC_OK == status.statusCode) {
+                resource = App.MAPPER.readValue<Poll>(jsonData, Poll::class.java)
             } else {
-                resource = App.MAPPER.readValue<ErrorMessage>(jsonData, javaClass<ErrorMessage>())
+                resource = App.MAPPER.readValue<ErrorMessage>(jsonData, ErrorMessage::class.java)
             }
             return resource
         }
@@ -164,10 +165,15 @@ class RootViewController : UIViewController() {
 
     private fun initAdBanner() {
         mainView.addSubview(adBanner)
-        adBanner.setFrame(CGRect(0.0, mainView.getFrame().getMaxY() - adBanner.getFrame().getHeight(), 0.0, 0.0))
+        adBanner.frame = CGRect(0.0, mainView.frame.maxY - adBanner.frame.height, 0.0, 0.0)
     }
 
     companion object {
         private val PADDING: Double = 10.0
+
+        init {
+            App.LOG.warning("App warn")
+            App.LOG.info("App info")
+        }
     }
 }

@@ -18,21 +18,22 @@ package net.loxal.user.ios
 
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
+import net.loxal.user.ios.view.RootViewController
 import org.robovm.apple.foundation.NSAutoreleasePool
 import org.robovm.apple.uikit.UIApplication
 import org.robovm.apple.uikit.UIApplicationDelegateAdapter
+import org.robovm.apple.uikit.UIApplicationLaunchOptions
 import java.util.logging.Logger
-import kotlin.platform.platformStatic
 
 class App : UIApplicationDelegateAdapter() {
     //    Property(selector = "window")
     //    private final var window: UIWindow? = getWindow()
     //
-    //    override fun didFinishLaunching(app: UIApplication?, launchOptions: UIApplicationLaunchOptions?): Boolean {
-    //        configureWindow()
-    //
-    //        return true
-    //    }
+    override fun didFinishLaunching(app: UIApplication?, launchOptions: UIApplicationLaunchOptions?): Boolean {
+        //            configureWindow()
+        RootViewController()
+        return true
+    }
     //
     //    private fun configureWindow() {
     //        window?.setRootViewController(RootViewController())
@@ -51,15 +52,21 @@ class App : UIApplicationDelegateAdapter() {
 
         init {
             configureMapper()
+            App.LOG.warning("INIT")
+            App.LOG.info("INIT")
+            App.LOG.warning("INIT")
+            App.LOG.info("INIT")
+            App.LOG.warning("INIT")
+            App.LOG.info("INIT")
         }
 
         private fun configureMapper() {
             MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
         }
 
-        platformStatic fun main(vararg args: String) {
+        @JvmStatic fun main(vararg args: String) {
             val autoreleasePool = NSAutoreleasePool()
-            UIApplication.main<UIApplication, App>(args, null, javaClass<App>())
+            UIApplication.main<UIApplication, App>(args, null, App::class.java)
             autoreleasePool.close()
         }
     }

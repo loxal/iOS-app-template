@@ -19,11 +19,11 @@ package net.loxal.user.ios.model
 import javax.validation.constraints.Min
 import javax.validation.constraints.NotNull
 
-data class Poll(NotNull var question: String = "", NotNull var answers: List<String> = listOf())
+data class Poll(@NotNull var question: String = "", @NotNull var answers: List<String> = listOf())
 
 data class Vote(
-        NotNull var referenceQuestion: String = "",
-        NotNull Min(value = 0) var answerOptionIndex: Int = 0
+        @NotNull var referenceQuestion: String = "",
+        @NotNull @Min(value = 0) var answerOptionIndex: Int = 0
 ) {
     var user: String = "anonymous"
 

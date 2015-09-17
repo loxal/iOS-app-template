@@ -46,6 +46,18 @@
         <pattern>java.util.logging.ConsoleHandler</pattern>
         <pattern>java.util.logging.SimpleFormatter</pattern>
 
+        <!--<pattern>org.osgi.framework.BundleReference</pattern>-->
+        <!--<pattern>java.awt.image.RenderedImage</pattern>-->
+        <pattern>**</pattern>
+        <pattern>com.fasterxml.**</pattern>
+        <pattern>org.glassfish.jersey.message.internal.DataSourceProvider</pattern>
+        <pattern>org.glassfish.jersey.**</pattern>
+        <pattern>org.glassfish.jersey.message.**</pattern>
+        <pattern>org.glassfish.jersey.message.internal.ReaderInterceptorExecutor</pattern>
+        <pattern>org.glassfish.jersey.message.internal.SourceProvider</pattern>
+
+        <pattern>org.glassfish.jersey.client.JerseyClientBuilder</pattern>
+
         <pattern>com.android.okhttp.HttpHandler</pattern>
         <pattern>com.android.okhttp.HttpsHandler</pattern>
         <pattern>com.android.org.conscrypt.**</pattern>
