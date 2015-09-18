@@ -47,7 +47,7 @@ class RootViewController : UIViewController() {
         App.LOG.warning("$uri")
 
         val c = ClientBuilder.newBuilder().build()
-        val u = c.target("https://api.yaas.io/loxal/rest-kit/v1/ballot/poll/simpsons-1bd81e658-380e-4241-bbf6-28d5102ce0ec")
+        val u = c.target("https://api.stage.yaas.io/loxal/rest-kit/v1/ballot/poll/simpsons-581ca1cb9-b697-4d20-959a-fe3eff0976b6")
         val rg = u.request().get();
         val o = rg.readEntity(String::class.java)
         val resource = App.MAPPER.readValue<Poll>(o, Poll::class.java)
@@ -65,7 +65,7 @@ class RootViewController : UIViewController() {
     private val answerContainer = UITableView()
 
     private val httpClient = DefaultHttpClient()
-    private var uri: URI = URI.create("https://api.yaas.io/loxal/rest-kit/v1/ballot/poll/simpsons-1bd81e658-380e-4241-bbf6-28d5102ce0ec")
+    private var uri: URI = URI.create("https://api.stage.yaas.io/loxal/rest-kit/v1/ballot/poll/simpsons-581ca1cb9-b697-4d20-959a-fe3eff0976b6")
     private val httpGet: HttpGet = HttpGet(uri)
 
     private val answer: Vote
@@ -90,17 +90,17 @@ class RootViewController : UIViewController() {
         mainView.addSubview(questionContainer)
 
         questionContainer.font = UIFont.getSystemFont(UIFont.getSystemFontSize())
-        questionContainer.frame = CGRect(PADDING, 40.0, mainView.getFrame().getMaxX(), 20.0)
+        questionContainer.frame = CGRect(PADDING, 40.0, mainView.frame.maxX, 20.0)
 
         mainView.addSubview(answerContainer)
-        answerContainer.frame = CGRect(PADDING, 80.0, mainView.getFrame().getMaxX() - (PADDING + 5), 400.0)
+        answerContainer.frame = CGRect(PADDING, 80.0, mainView.frame.maxX - (PADDING + 5), 400.0)
         answerContainer.separatorStyle = UITableViewCellSeparatorStyle.None
     }
 
     private fun initNextQuestion() {
         mainView.addSubview(nextQuestion)
 
-        nextQuestion.frame = CGRect(0.0, mainView.getFrame().getMidY(), mainView.getFrame().getMidX() + 100, 20.0)
+        nextQuestion.frame = CGRect(0.0, mainView.frame.midY, mainView.frame.midX + 100, 20.0)
         nextQuestion.setTitle("Next Question", UIControlState.Normal)
         nextQuestion.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Right
 
