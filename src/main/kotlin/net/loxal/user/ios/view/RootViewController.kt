@@ -59,7 +59,7 @@ class RootViewController : UIViewController() {
 
     private var questionContainer = UILabel()
 
-    private val nextQuestion = UIButton(UIButtonType.System)
+    private val nextQuestion = UIButton.create(UIButtonType.System)
     private val adBanner = ADBannerView(ADAdType.Banner)
 
     private val answerContainer = UITableView()
@@ -130,7 +130,7 @@ class RootViewController : UIViewController() {
     }
 
     private fun showAnswerOption(answerIdx: Int, poll: Poll) {
-        val answerOption = UIButton(UIButtonType.RoundedRect)
+        val answerOption = UIButton.create(UIButtonType.RoundedRect)
         answerOption.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
         val rowIdx = answerIdx + 1
         answerOption.setTitle("$rowIdx. ${poll.answers.get(answerIdx)}", UIControlState.Normal)
