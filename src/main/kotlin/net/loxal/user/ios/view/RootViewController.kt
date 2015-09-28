@@ -47,7 +47,7 @@ class RootViewController : UIViewController() {
         App.LOG.warning("$uri")
 
         val c = ClientBuilder.newBuilder().build()
-        val u = c.target("https://api.stage.yaas.io/loxal/rest-kit/v1/ballot/poll/simpsons-581ca1cb9-b697-4d20-959a-fe3eff0976b6")
+        val u = c.target("https://api.stage.yaas.io/loxal/rest-kit/v1/ballot/poll/simpsons-42e1dd4d7-32f7-4dd2-8d78-5a94a983360b")
         val rg = u.request().get();
         val o = rg.readEntity(String::class.java)
         val resource = App.MAPPER.readValue<Poll>(o, Poll::class.java)
@@ -59,13 +59,13 @@ class RootViewController : UIViewController() {
 
     private var questionContainer = UILabel()
 
-    private val nextQuestion = UIButton.create(UIButtonType.System)
+    private val nextQuestion = UIButton(UIButtonType.System)
     private val adBanner = ADBannerView(ADAdType.Banner)
 
     private val answerContainer = UITableView()
 
     private val httpClient = DefaultHttpClient()
-    private var uri: URI = URI.create("https://api.stage.yaas.io/loxal/rest-kit/v1/ballot/poll/simpsons-581ca1cb9-b697-4d20-959a-fe3eff0976b6")
+    private var uri: URI = URI.create("https://api.stage.yaas.io/loxal/rest-kit/v1/ballot/poll/simpsons-42e1dd4d7-32f7-4dd2-8d78-5a94a983360b")
     private val httpGet: HttpGet = HttpGet(uri)
 
     private val answer: Vote
@@ -130,14 +130,14 @@ class RootViewController : UIViewController() {
     }
 
     private fun showAnswerOption(answerIdx: Int, poll: Poll) {
-        val answerOption = UIButton.create(UIButtonType.RoundedRect)
+        val answerOption = UIButton(UIButtonType.RoundedRect)
         answerOption.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
         val rowIdx = answerIdx + 1
         answerOption.setTitle("$rowIdx. ${poll.answers.get(answerIdx)}", UIControlState.Normal)
         answerOption.frame = CGRect(PADDING, 0.0, mainView.frame.maxX, rowIdx * 50.0)
         answerOption.addOnTouchUpInsideListener(UIControl.OnTouchUpInsideListener({ control, event ->
             run {
-                App.LOG.info("rowIndex: ${rowIdx}")
+                App.LOG.info("rowIndex: $rowIdx")
             }
         }))
 
