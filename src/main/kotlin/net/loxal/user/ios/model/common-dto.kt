@@ -37,7 +37,7 @@ data class ErrorMessage private constructor() {
     //    var details: Set<ErrorDetail> = emptySet()
 
     companion object {
-        val TYPE_REGEXP_PATTERN = "[a-z]+[[a-z]_]*[a-z]+"
+        const val TYPE_REGEXP_PATTERN = "[a-z]+[[a-z]_]*[a-z]+"
 
         @JvmStatic fun create(errorMsg: String?): ErrorMessage {
             val e = ErrorMessage()

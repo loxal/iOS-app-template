@@ -46,8 +46,6 @@
         <pattern>java.util.logging.ConsoleHandler</pattern>
         <pattern>java.util.logging.SimpleFormatter</pattern>
 
-        <!--<pattern>org.osgi.framework.BundleReference</pattern>-->
-        <!--<pattern>java.awt.image.RenderedImage</pattern>-->
         <pattern>**</pattern>
         <pattern>com.fasterxml.**</pattern>
         <pattern>org.glassfish.jersey.message.internal.DataSourceProvider</pattern>
