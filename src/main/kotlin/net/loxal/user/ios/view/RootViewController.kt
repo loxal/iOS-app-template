@@ -47,7 +47,7 @@ class RootViewController : UIViewController() {
         App.LOG.warning("$uri")
 
         val c = ClientBuilder.newBuilder().build()
-        val u = c.target("https://api.stage.yaas.io/loxal/rest-kit/v1/ballot/poll/simpsons-42e1dd4d7-32f7-4dd2-8d78-5a94a983360b")
+        val u = c.target("https://api.stage.yaas.io/loxal/rest-kit/v1/ballot/poll/simpsons-3801852cf-a0eb-42cd-be59-99f0c55cfa94")
         val rg = u.request().get();
         val o = rg.readEntity(String::class.java)
         val resource = App.MAPPER.readValue<Poll>(o, Poll::class.java)
@@ -73,7 +73,7 @@ class RootViewController : UIViewController() {
     init {
         mainView.backgroundColor = UIColor.white()
         //
-        answer = Vote("first-question", 2)
+        answer = Vote("first-question", listOf(2))
         //
         initQuestionContainer()
         initNextQuestion()
@@ -124,7 +124,7 @@ class RootViewController : UIViewController() {
     }
 
     private fun showAnswerOptions(question: Poll) {
-        for (answerIdx in question.answers.indices) {
+        for (answerIdx in question.options.indices) {
             showAnswerOption(answerIdx, question)
         }
     }
@@ -133,7 +133,7 @@ class RootViewController : UIViewController() {
         val answerOption = UIButton.create(UIButtonType.RoundedRect)
         answerOption.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
         val rowIdx = answerIdx + 1
-        answerOption.setTitle("$rowIdx. ${poll.answers.get(answerIdx)}", UIControlState.Normal)
+        answerOption.setTitle("$rowIdx. ${poll.options[answerIdx]}", UIControlState.Normal)
         answerOption.frame = CGRect(PADDING, 0.0, mainView.frame.maxX, rowIdx * 50.0)
         answerOption.addOnTouchUpInsideListener(UIControl.OnTouchUpInsideListener({ control, event ->
             run {

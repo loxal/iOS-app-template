@@ -25,9 +25,10 @@ import javax.ws.rs.core.Response
 /**
  * Detailed error message used in response to provide all errors triggered by a request.
  */
-data class ErrorMessage private constructor() {
-    @NotNull @Pattern(regexp = TYPE_REGEXP_PATTERN)
-    var type: String? = Response.Status.BAD_REQUEST.reasonPhrase
+data class ErrorMessage(
+        @Pattern(regexp = ErrorMessage.TYPE_REGEXP_PATTERN)
+        var type: String? = Response.Status.BAD_REQUEST.reasonPhrase
+) {
     @NotNull
     @Min(value = 100)
     @Max(value = 599)
@@ -48,15 +49,17 @@ data class ErrorMessage private constructor() {
     }
 }
 
-data class ErrorDetail private constructor() {
+data class ErrorDetail(
+        @Pattern(regexp = ErrorMessage.TYPE_REGEXP_PATTERN)
+        var type: String = ""
+) {
     var field: String = ""
-    @NotNull @Pattern(regexp = ErrorMessage.TYPE_REGEXP_PATTERN)
-    var type: String = ""
     var message: String = ""
 }
 
-data class Authorization() {
-    var access_token: String = ""
+data class Authorization(
+        var access_token: String = ""
+) {
     var expires_in: Int = 0
     var token_type: String = ""
     var scope: String = ""
