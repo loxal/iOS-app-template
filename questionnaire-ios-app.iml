@@ -12,7 +12,7 @@
       <excludeFolder url="file://$MODULE_DIR$/${project.build.directory}/test-classes" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
-    <orderEntry type="jdk" jdkName="RoboVM SDK 1.8.0" jdkType="RoboVM SDK" />
+    <orderEntry type="jdk" jdkName="RoboVM SDK 1.9.0" jdkType="RoboVM SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Maven: org.glassfish.jersey.ext:jersey-bean-validation:2.22.1" level="project" />
     <orderEntry type="library" name="Maven: org.glassfish.hk2.external:javax.inject:2.4.0-b31" level="project" />
@@ -38,10 +38,10 @@
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.6.1" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.6.0" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.6.1" level="project" />
-    <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib:1.0.0-beta-1038" level="project" />
-    <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-runtime:1.0.0-beta-1038" level="project" />
-    <orderEntry type="library" name="Maven: org.robovm:robovm-rt:1.7.0" level="project" />
-    <orderEntry type="library" name="Maven: org.robovm:robovm-cocoatouch:1.7.0" level="project" />
-    <orderEntry type="library" name="Maven: org.robovm:robovm-objc:1.7.0" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib:1.0.0-beta-2417" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-runtime:1.0.0-beta-2417" level="project" />
+    <orderEntry type="library" name="Maven: org.robovm:robovm-rt:1.9.0" level="project" />
+    <orderEntry type="library" name="Maven: org.robovm:robovm-cocoatouch:1.9.0" level="project" />
+    <orderEntry type="library" name="Maven: org.robovm:robovm-objc:1.9.0" level="project" />
   </component>
 </module>
