@@ -16,22 +16,12 @@
 
 package net.loxal.user.ios.model
 
-import javax.validation.constraints.Max
-import javax.validation.constraints.Min
-import javax.validation.constraints.NotNull
-import javax.validation.constraints.Pattern
-import javax.ws.rs.core.Response
-
 /**
  * Detailed error message used in response to provide all errors triggered by a request.
  */
 data class ErrorMessage(
-        @Pattern(regexp = ErrorMessage.TYPE_REGEXP_PATTERN)
-        var type: String? = Response.Status.BAD_REQUEST.reasonPhrase
+        var type: String? = null
 ) {
-    @NotNull
-    @Min(value = 100)
-    @Max(value = 599)
     var status: Int = 0
     var message: String? = ""
     var moreInfo: String = ""
@@ -50,7 +40,6 @@ data class ErrorMessage(
 }
 
 data class ErrorDetail(
-        @Pattern(regexp = ErrorMessage.TYPE_REGEXP_PATTERN)
         var type: String = ""
 ) {
     var field: String = ""

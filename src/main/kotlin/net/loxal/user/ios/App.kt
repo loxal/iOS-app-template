@@ -64,7 +64,8 @@ class App : UIApplicationDelegateAdapter() {
             MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
         }
 
-        @JvmStatic fun main(vararg args: String) {
+        @JvmStatic
+        fun main(vararg args: String) {
             val autoreleasePool = NSAutoreleasePool()
             UIApplication.main<UIApplication, App>(args, null, App::class.java)
             autoreleasePool.close()

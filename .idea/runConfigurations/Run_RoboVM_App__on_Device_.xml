@@ -1,0 +1,15 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Run RoboVM App (on Device)" type="com.robovm.idea.running.RoboVmIOSConfigurationType" factoryName="RoboVM iOS" singleton="true">
+    <module name="questionnaire-ios-app" />
+    <option name="moduleName" value="questionnaire-ios-app" />
+    <option name="targetType" value="Device" />
+    <option name="deviceArch" value="arm64" />
+    <option name="signingIdentity" value="Auto (matches 'iPhone Developer|iOS Development')" />
+    <option name="provisioningProfile" value="Auto" />
+    <option name="simArch" value="x86_64" />
+    <option name="simulatorName" value="com.apple.CoreSimulator.SimDeviceType.iPhone-6s" />
+    <option name="arguments" value="" />
+    <option name="workingDir" value="" />
+    <method />
+  </configuration>
+</component>

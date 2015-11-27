@@ -16,8 +16,6 @@
 
 package net.loxal.user.ios.model
 
-import javax.validation.constraints.Min
-
 data class Poll(
         var question: String = "",
         var options: List<String> = arrayListOf(),
@@ -30,7 +28,7 @@ data class Poll(
 
 data class Vote(
         var referencePoll: String = "",
-        @Min(value = 0) var answers: List<Int> = arrayListOf()
+        var answers: List<Int> = arrayListOf()
 ) {
     var user: String = "anonymous"
     var correct: Boolean? = false

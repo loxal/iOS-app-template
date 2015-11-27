@@ -32,7 +32,6 @@ import org.robovm.objc.annotation.IBAction
 import org.robovm.objc.annotation.IBOutlet
 import java.io.ByteArrayOutputStream
 import java.net.URI
-import javax.ws.rs.client.ClientBuilder
 
 @CustomClass("RootViewController")
 class RootViewController : UIViewController() {
@@ -45,14 +44,6 @@ class RootViewController : UIViewController() {
     private fun nextQuestion() {
         questionContainer.text = "$uri"
         App.LOG.warning("$uri")
-
-        val c = ClientBuilder.newBuilder().build()
-        val u = c.target("https://api.stage.yaas.io/loxal/rest-kit/v1/ballot/poll/simpsons-3801852cf-a0eb-42cd-be59-99f0c55cfa94")
-        val rg = u.request().get();
-        val o = rg.readEntity(String::class.java)
-        val resource = App.MAPPER.readValue<Poll>(o, Poll::class.java)
-        questionContainer.text = "${resource.question}"
-
     }
 
     private val mainView = view

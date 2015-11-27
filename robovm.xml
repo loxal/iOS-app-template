@@ -19,7 +19,7 @@
     <executableName>${app.executable}</executableName>
     <mainClass>${app.mainClass}</mainClass>
     <os>ios</os>
-    <arch>thumbv7</arch>
+    <arch>arm64</arch>
     <resources>
         <resource>
             <directory>src/main/resources</directory>
