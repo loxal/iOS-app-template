@@ -26,25 +26,10 @@ import org.robovm.apple.uikit.UIApplicationLaunchOptions
 import java.util.logging.Logger
 
 class App : UIApplicationDelegateAdapter() {
-    //    Property(selector = "window")
-    //    private final var window: UIWindow? = getWindow()
-    //
     override fun didFinishLaunching(app: UIApplication?, launchOptions: UIApplicationLaunchOptions?): Boolean {
-        //            configureWindow()
         RootViewController()
         return true
     }
-    //
-    //    private fun configureWindow() {
-    //        window?.setRootViewController(RootViewController())
-    //        window?.makeKeyAndVisible()
-    //    }
-    //
-    //    override fun getWindow() = window
-    //
-    //    override fun setWindow(window: UIWindow?) {
-    //        this.window = UIWindow(UIScreen.getMainScreen().getNativeBounds())
-    //    }
 
     companion object {
         val LOG: Logger = Logger.getGlobal()
@@ -52,12 +37,6 @@ class App : UIApplicationDelegateAdapter() {
 
         init {
             configureMapper()
-            App.LOG.warning("INIT")
-            App.LOG.info("INIT")
-            App.LOG.warning("INIT")
-            App.LOG.info("INIT")
-            App.LOG.warning("INIT")
-            App.LOG.info("INIT")
         }
 
         private fun configureMapper() {
