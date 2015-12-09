@@ -16,6 +16,8 @@
 
 package net.loxal.user.ios.view
 
+import com.squareup.okhttp.OkHttpClient
+import com.squareup.okhttp.Request
 import net.loxal.user.ios.App
 import net.loxal.user.ios.model.ErrorMessage
 import net.loxal.user.ios.model.Poll
@@ -43,7 +45,16 @@ class RootViewController : UIViewController() {
     @IBAction
     private fun nextQuestion() {
         questionContainer.text = "$uri"
-        App.LOG.warning("$uri")
+        App.LOG.info("$uri")
+
+        val client = OkHttpClient()
+        val request = Request.Builder()
+                .url("https://api.stage.yaas.io/loxal/rest-kit/v1/ballot/poll/simpsons-42e1dd4d7-32f7-4dd2-8d78-5a94a983360b")
+                .build()
+        val response = client.newCall(request).execute()
+        val body = response.body().string()
+        App.LOG.info("$body")
+
     }
 
     private val mainView = view
@@ -71,10 +82,7 @@ class RootViewController : UIViewController() {
         initAdBanner()
         refreshStatus()
 
-        App.LOG.warning("$uri")
-        App.LOG.warning("$uri")
-        App.LOG.warning("$uri")
-        App.LOG.warning("$uri")
+        App.LOG.info("$uri")
     }
 
     private fun initQuestionContainer() {
