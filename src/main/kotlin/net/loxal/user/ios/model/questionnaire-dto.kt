@@ -16,6 +16,8 @@
 
 package net.loxal.user.ios.model
 
+import kotlin.collections.arrayListOf
+
 data class Poll(
         var question: String = "",
         var options: List<String> = arrayListOf(),

@@ -12,7 +12,7 @@
       <excludeFolder url="file://$MODULE_DIR$/${project.build.directory}/test-classes" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
-    <orderEntry type="jdk" jdkName="RoboVM SDK 1.11.0" jdkType="RoboVM SDK" />
+    <orderEntry type="jdk" jdkName="RoboVM SDK 1.12.0" jdkType="RoboVM SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Maven: com.squareup.okhttp:okhttp:2.6.0" level="project" />
     <orderEntry type="library" name="Maven: com.squareup.okio:okio:1.6.0" level="project" />
@@ -20,10 +20,10 @@
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.6.1" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.6.0" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.6.1" level="project" />
-    <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib:1.0.0-beta-3595" level="project" />
-    <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-runtime:1.0.0-beta-3595" level="project" />
-    <orderEntry type="library" name="Maven: org.robovm:robovm-rt:1.11.0" level="project" />
-    <orderEntry type="library" name="Maven: org.robovm:robovm-cocoatouch:1.11.0" level="project" />
-    <orderEntry type="library" name="Maven: org.robovm:robovm-objc:1.11.0" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib:1.0.0-beta-4583" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-runtime:1.0.0-beta-4583" level="project" />
+    <orderEntry type="library" name="Maven: org.robovm:robovm-rt:1.12.0" level="project" />
+    <orderEntry type="library" name="Maven: org.robovm:robovm-cocoatouch:1.12.0" level="project" />
+    <orderEntry type="library" name="Maven: org.robovm:robovm-objc:1.12.0" level="project" />
   </component>
 </module>

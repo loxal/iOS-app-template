@@ -34,6 +34,8 @@ import org.robovm.objc.annotation.IBAction
 import org.robovm.objc.annotation.IBOutlet
 import java.io.ByteArrayOutputStream
 import java.net.URI
+import kotlin.collections.indices
+import kotlin.collections.listOf
 
 @CustomClass("RootViewController")
 class RootViewController : UIViewController() {
@@ -74,9 +76,8 @@ class RootViewController : UIViewController() {
 
     init {
         mainView.backgroundColor = UIColor.white()
-        //
         answer = Vote("first-question", listOf(2))
-        //
+
         initQuestionContainer()
         initNextQuestion()
         initAdBanner()
