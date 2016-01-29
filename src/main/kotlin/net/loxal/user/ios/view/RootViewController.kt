@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Alexander Orlov <alexander.orlov@loxal.net>
+ * Copyright 2016 Alexander Orlov <alexander.orlov@loxal.net>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,12 +16,12 @@
 
 package net.loxal.user.ios.view
 
-import com.squareup.okhttp.OkHttpClient
-import com.squareup.okhttp.Request
 import net.loxal.user.ios.App
 import net.loxal.user.ios.model.ErrorMessage
 import net.loxal.user.ios.model.Poll
 import net.loxal.user.ios.model.Vote
+import okhttp3.OkHttpClient
+import okhttp3.Request
 import org.apache.http.HttpStatus
 import org.apache.http.client.methods.HttpGet
 import org.apache.http.impl.client.DefaultHttpClient
@@ -34,8 +34,6 @@ import org.robovm.objc.annotation.IBAction
 import org.robovm.objc.annotation.IBOutlet
 import java.io.ByteArrayOutputStream
 import java.net.URI
-import kotlin.collections.indices
-import kotlin.collections.listOf
 
 @CustomClass("RootViewController")
 class RootViewController : UIViewController() {
@@ -51,7 +49,7 @@ class RootViewController : UIViewController() {
 
         val client = OkHttpClient()
         val request = Request.Builder()
-                .url("https://api.stage.yaas.io/loxal/rest-kit/v1/ballot/poll/simpsons-42e1dd4d7-32f7-4dd2-8d78-5a94a983360b")
+                .url("http://rest-kit.loxal.net/ballot/poll/simpsons-17d5313d0-fa6d-470a-af2f-784b1fdcd1af")
                 .build()
         val response = client.newCall(request).execute()
         val body = response.body().string()
@@ -69,7 +67,7 @@ class RootViewController : UIViewController() {
     private val answerContainer = UITableView()
 
     private val httpClient = DefaultHttpClient()
-    private var uri: URI = URI.create("https://api.stage.yaas.io/loxal/rest-kit/v1/ballot/poll/simpsons-42e1dd4d7-32f7-4dd2-8d78-5a94a983360b")
+    private var uri: URI = URI.create("http://rest-kit.loxal.net/ballot/poll/simpsons-17d5313d0-fa6d-470a-af2f-784b1fdcd1af")
     private val httpGet: HttpGet = HttpGet(uri)
 
     private val answer: Vote
