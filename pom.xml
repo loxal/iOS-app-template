@@ -33,7 +33,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <robovm.version>1.13.0</robovm.version>
-        <kotlin.version>1.0.0-beta-4589</kotlin.version>
+        <kotlin.version>1.0.0-rc-1036</kotlin.version>
         <robovm.mainClass>net.loxal.user.ios.App</robovm.mainClass>
     </properties>
 
@@ -41,7 +41,7 @@
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
-            <version>3.0.1</version>
+            <version>3.1.0</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
