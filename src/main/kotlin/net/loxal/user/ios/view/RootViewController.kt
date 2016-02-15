@@ -49,7 +49,7 @@ class RootViewController : UIViewController() {
 
         val client = OkHttpClient()
         val request = Request.Builder()
-                .url("http://rest-kit.loxal.net/ballot/poll/simpsons-17d5313d0-fa6d-470a-af2f-784b1fdcd1af")
+                .url("http://service-kit.loxal.net/ballot/poll/simpsons-17d5313d0-fa6d-470a-af2f-784b1fdcd1af")
                 .build()
         val response = client.newCall(request).execute()
         val body = response.body().string()
@@ -67,7 +67,7 @@ class RootViewController : UIViewController() {
     private val answerContainer = UITableView()
 
     private val httpClient = DefaultHttpClient()
-    private var uri: URI = URI.create("http://rest-kit.loxal.net/ballot/poll/simpsons-17d5313d0-fa6d-470a-af2f-784b1fdcd1af")
+    private var uri: URI = URI.create("http://service-kit.loxal.net/ballot/poll/simpsons-17d5313d0-fa6d-470a-af2f-784b1fdcd1af")
     private val httpGet: HttpGet = HttpGet(uri)
 
     private val answer: Vote
