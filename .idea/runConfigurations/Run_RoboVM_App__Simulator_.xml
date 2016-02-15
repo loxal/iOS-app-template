@@ -6,7 +6,7 @@
     <option name="deviceArch" value="arm64" />
     <option name="signingIdentity" value="Auto (matches 'iPhone Developer|iOS Development')" />
     <option name="provisioningProfile" value="Auto" />
-    <option name="simArch" value="x86_64" />
+    <option name="simArch" value="x86" />
     <option name="simulatorName" value="com.apple.CoreSimulator.SimDeviceType.iPhone-6s" />
     <option name="arguments" value="" />
     <option name="workingDir" value="" />

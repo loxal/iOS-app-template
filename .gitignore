@@ -4,4 +4,5 @@
 # IDE-agnostic
 target/
 build/
+robovm-build
 \.gradle/
