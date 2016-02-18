@@ -4,7 +4,7 @@
     <option name="moduleName" value="questionnaire-ios-app" />
     <option name="targetType" value="Device" />
     <option name="deviceArch" value="arm64" />
-    <option name="signingIdentity" value="Auto (matches 'iPhone Developer|iOS Development')" />
+    <option name="signingIdentity" value="iPhone Developer: alexander.orlov@loxal.net (297QJMPNYH)" />
     <option name="provisioningProfile" value="Auto" />
     <option name="simArch" value="x86_64" />
     <option name="simulatorName" value="com.apple.CoreSimulator.SimDeviceType.iPhone-6s" />
