@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Alexander Orlov <alexander.orlov@loxal.net>
+ * Copyright 2016 Alexander Orlov <alexander.orlov@loxal.net>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,6 +14,26 @@
  * limitations under the License.
  */
 
-package net.loxal.user.ios.model
+package net.loxal.user.ios.model.dto;
 
-class Host(var name: String = "unknown host name", var address: String = "unknown IP address")
+public class Host {
+    private String name = "unknown host name";
+    private String address = "unknown IP address";
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+}
+

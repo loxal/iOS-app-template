@@ -32,4 +32,3 @@ Currently it’s not possible to start the application from IntelliJ IDEA.
 * [RoboVM Project](http://www.robovm.com)
 * [RoboVM Samples](https://github.com/robovm/robovm-samples)
 * [JavaFX on iOS & Android](http://javafxports.org)
-* [Tired of being stuck with Java 7 syntax on Android? Target Android with Kotlin!](http://kotlinlang.org)
