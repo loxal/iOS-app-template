@@ -22,10 +22,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="questionnaire-ios-app" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="iOS-app-template_main" target="1.8" />
+      <module name="iOS-app-template_test" target="1.8" />
       <module name="questionnaire-ios-app" target="8" />
     </bytecodeTargetLevel>
   </component>

@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/questionnaire-ios-app.iml" filepath="$PROJECT_DIR$/questionnaire-ios-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/iOS-app-template.iml" filepath="$PROJECT_DIR$/.idea/modules/iOS-app-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/iOS-app-template_main.iml" filepath="$PROJECT_DIR$/.idea/modules/iOS-app-template_main.iml" group="iOS-app-template" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/iOS-app-template_test.iml" filepath="$PROJECT_DIR$/.idea/modules/iOS-app-template_test.iml" group="iOS-app-template" />
     </modules>
   </component>
 </project>

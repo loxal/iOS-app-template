@@ -12,8 +12,8 @@
 <img src="https://img.shields.io/badge/gratipay-donate-yellow.svg" alt="Gratipay Donate" />
 </a></span>
 <!-- /BADGES -->
-# RoboVM iOS App Template
-An out of the box working *RoboVM* template project for *IntelliJ IDEA*, **Maven**, and **Gradle** in order to build iOS apps.
+# BugVM iOS App Template
+An out of the box working *BugVM* template project for *IntelliJ IDEA*, **Maven**, and **Gradle** in order to build iOS apps.
 Currently it’s not possible to start the application from IntelliJ IDEA.
 
 ## Getting Started
@@ -29,6 +29,4 @@ Currently it’s not possible to start the application from IntelliJ IDEA.
 
 ## References
 
-* [RoboVM Project](http://www.robovm.com)
-* [RoboVM Samples](https://github.com/robovm/robovm-samples)
-* [JavaFX on iOS & Android](http://javafxports.org)
+* [BugVM Project](http://www.bugvm.com)

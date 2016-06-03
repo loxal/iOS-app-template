@@ -16,13 +16,13 @@
 
 package net.loxal.user.ios;
 
+import com.bugvm.apple.foundation.NSAutoreleasePool;
+import com.bugvm.apple.uikit.UIApplication;
+import com.bugvm.apple.uikit.UIApplicationDelegateAdapter;
+import com.bugvm.apple.uikit.UIApplicationLaunchOptions;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import net.loxal.user.ios.view.RootViewController;
-import org.robovm.apple.foundation.NSAutoreleasePool;
-import org.robovm.apple.uikit.UIApplication;
-import org.robovm.apple.uikit.UIApplicationDelegateAdapter;
-import org.robovm.apple.uikit.UIApplicationLaunchOptions;
 
 import java.util.logging.Logger;
 
