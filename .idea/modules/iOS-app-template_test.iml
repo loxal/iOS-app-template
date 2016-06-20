@@ -7,22 +7,22 @@
       <sourceFolder url="file://$MODULE_DIR$/../../src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/../../src/test/resources" type="java-test-resource" />
     </content>
-    <orderEntry type="jdk" jdkName="BugVM SDK 1.1.0" jdkType="BugVM SDK" />
+    <orderEntry type="jdk" jdkName="BugVM SDK 1.1.4" jdkType="BugVM SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="iOS-app-template_main" />
     <orderEntry type="library" name="Gradle: com.squareup.okhttp3:okhttp:3.2.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.code.gson:gson:2.6.2" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-databind:2.7.3" level="project" />
-    <orderEntry type="library" name="Gradle: com.bugvm:bugvm-gradle:1.1.0" level="project" />
-    <orderEntry type="library" name="Gradle: com.bugvm:bugvm-rt:1.1.0" level="project" />
-    <orderEntry type="library" name="Gradle: com.bugvm:bugvm-cocoatouch:1.1.0" level="project" />
-    <orderEntry type="library" name="Gradle: com.bugvm:bugvm-objc:1.1.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.bugvm:bugvm-gradle:1.1.4" level="project" />
+    <orderEntry type="library" name="Gradle: com.bugvm:bugvm-rt:1.1.4" level="project" />
+    <orderEntry type="library" name="Gradle: com.bugvm:bugvm-cocoatouch:1.1.4" level="project" />
+    <orderEntry type="library" name="Gradle: com.bugvm:bugvm-objc:1.1.4" level="project" />
     <orderEntry type="library" name="Gradle: com.squareup.okio:okio:1.6.0" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-annotations:2.7.0" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-core:2.7.3" level="project" />
     <orderEntry type="library" name="Gradle: org.sonatype.aether:aether-connector-wagon:1.13.1" level="project" />
+    <orderEntry type="library" name="Gradle: com.bugvm:bugvm-dist-compiler:1.1.4" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.commons:commons-compress:1.5" level="project" />
-    <orderEntry type="library" name="Gradle: com.bugvm:bugvm-dist-compiler:1.1.0" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.maven.wagon:wagon-provider-api:2.4" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.maven:maven-aether-provider:3.0.4" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.maven.wagon:wagon-http:2.4" level="project" />
